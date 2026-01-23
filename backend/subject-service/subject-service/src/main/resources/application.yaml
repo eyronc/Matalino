@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: subject-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/matalino
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8084

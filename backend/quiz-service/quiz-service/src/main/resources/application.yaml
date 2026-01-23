@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: quiz-service
+  mongodb:
+    uri: mongodb+srv://glyzelgalagar_db_user:${MONGO_PASS}@cluster0.yrqqa1g.mongodb.net/matalino?retryWrites=true&w=majority
+
+server:
+  port: 8085
