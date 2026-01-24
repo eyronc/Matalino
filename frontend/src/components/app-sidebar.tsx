@@ -58,34 +58,15 @@ const data = {
       isActive: true,
       items: [
         {
+          title: "Profile",
+          url: "#",
+        },
+        {
+          title: "Files",
+          url: "#",
+        },
+        {
           title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Subscriptions",
-      url: "#",
-      icon: Coins,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
           url: "#",
         },
       ],
@@ -96,21 +77,13 @@ const data = {
       icon: MessageCircle,
       items: [
         {
-          title: "Introduction",
+          title: "Feed",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Groups",
           url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
+        }
       ],
     },
     {

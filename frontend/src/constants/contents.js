@@ -88,3 +88,40 @@ export const examContents = [
     coverage: ["Mathematics", "Science", "English"],
   }
 ];
+
+export const customLessons = [];
+export const customExamContents = [];
+
+export const topicData = {
+  topic: "Compose essentials",
+  description:
+    "Take your first steps with Jetpack Compose and learn about composable functions, basic layouts and state, Material Design, lists and animations.",
+  activities: 10,
+  quizzes: 1,
+  modules: [
+    {
+      id: 1,
+      title: "Starter tutorial",
+      type: "Tutorial",
+      content: ["Introduction", "Setup", "First run"],
+    },
+    {
+      id: 2,
+      title: "Thinking in Compose",
+      type: "Video",
+      content: ["Declarative UI", "Mental model"],
+    },
+    {
+      id: 3,
+      title: "Composable functions",
+      type: "Video",
+      content: ["@Composable", "Recomposition"],
+    },
+    {
+      id: 4,
+      title: "Write your first Compose app",
+      type: "Codelab",
+      content: ["Create project", "UI basics"],
+    },
+  ],
+};
