@@ -22,7 +22,6 @@ import Notes from "../pages/Notes";
 export default function UserDashboardLayout() {
   const page = useSelector((state) => state.page.value);
   const pages = [<Dashboard />, <Lessons />, <Exams />, <Notes />];
-
   return (
     <SidebarProvider>
       <AppSidebar />
