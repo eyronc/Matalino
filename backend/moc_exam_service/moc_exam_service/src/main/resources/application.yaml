@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: moc_exam_service

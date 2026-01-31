@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/ai-tools_service/ai-tools_service/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/ai-tools_service/ai-tools_service/target" />
+      <excludeFolder url="file://$MODULE_DIR$/config-server/config-server/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/config-server/config-server/target" />
+      <excludeFolder url="file://$MODULE_DIR$/discovery-server/discovery-server/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/discovery-server/discovery-server/target" />
+      <excludeFolder url="file://$MODULE_DIR$/lesson_service/lesson_service/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/lesson_service/lesson_service/target" />
+      <excludeFolder url="file://$MODULE_DIR$/user_service/user_service/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/user_service/user_service/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

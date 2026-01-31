@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: lesson-service
+
+  mongodb:
+    uri: ${MONGO_URL}
+server:
+  port: 8082
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
+
+
