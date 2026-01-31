@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   AudioWaveform,
-  Coins,
   Command,
   Frame,
   GalleryVerticalEnd,
@@ -35,17 +34,17 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Matalino",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
     {
-      name: "Acme Corp.",
+      name: "Matalino",
       logo: AudioWaveform,
       plan: "Startup",
     },
     {
-      name: "Evil Corp.",
+      name: "Matalino",
       logo: Command,
       plan: "Free",
     },
