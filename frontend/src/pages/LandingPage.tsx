@@ -1,5 +1,3 @@
-//LANDING PAGE
-
 import { useState } from 'react';
 
 const svgPaths = {
@@ -35,12 +33,6 @@ const svgPaths = {
   faq: {
     p1d907d00: "M6 9l6-6 6 6",
     p2aa6f900: "M6 6l6 6 6-6",
-  },
-  cta: {
-    p10032a80: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z",
-    p113f3a80: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z",
-    p3ffa0c00: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z",
-    p6a6b10: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z",
   },
 };
 
@@ -559,32 +551,75 @@ function FeatureCard({ title, desc }: { title: string; desc: string }) {
 
 // ============ TESTIMONIALS SECTION ============
 
+interface Testimonial {
+  name: string;
+  quote: string;
+}
+
 function TestimonialsSection() {
+  const testimonials: Testimonial[] = [
+    { name: "Manuel Rikob", quote: "Working with Master in me has been an incredibly painless and enjoyable experience." },
+    { name: "Sarah Chen", quote: "This platform helped me ace my entrance exam! The AI tutor is amazing and always available." },
+    { name: "Juan Dela Cruz", quote: "I improved my scores by 40%! The practice tests and flashcards are super helpful." },
+    { name: "Maria Santos", quote: "Best review platform ever! I got into my dream university thanks to Matalino." }
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div className="bg-[#fafafa] flex flex-col gap-6 md:gap-10 items-center px-4 md:px-25 py-12 md:py-22 w-full">
       <h2 className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-3xl md:text-[56px] w-full leading-[1.2]">
         What our clients say
       </h2>
       
-      <div className="bg-[#1e242c] w-full rounded-3xl overflow-hidden">
+      <div className="bg-[#1e242c] w-full rounded-3xl overflow-hidden relative">
         <div className="flex flex-col gap-6 md:gap-10 items-center justify-center px-4 md:px-4 py-8 md:py-12">
-          <p className="font-['Manrope',sans-serif] font-semibold text-white text-lg md:text-[20px]">Manuel Rikob</p>
+          <p className="font-['Manrope',sans-serif] font-semibold text-white text-lg md:text-[20px]">
+            {testimonials[currentIndex].name}
+          </p>
           
-          <div className="font-['General_Sans',sans-serif] font-medium text-white text-2xl md:text-[40px] text-center max-w-full md:max-w-132 leading-[1.2]">
-            <p>"Working with Master in me has been an incredibly painless and enjoyable experience."</p>
+          <div className="font-['General_Sans',sans-serif] font-medium text-white text-2xl md:text-[40px] text-center max-w-full md:max-w-132 leading-[1.2] min-h-30 md:min-h-40 flex items-center">
+            <p>"{testimonials[currentIndex].quote}"</p>
           </div>
           
           <div className="flex gap-3 md:gap-4 items-center justify-center">
-            <button className="bg-[#edeef0] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#d4d8dd] transition-all cursor-pointer">
+            <button 
+              onClick={handlePrev}
+              className="bg-[#edeef0] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#d4d8dd] transition-all cursor-pointer"
+            >
               <svg className="size-5 md:size-6" fill="none" viewBox="0 0 16 15.556">
                 <path d={svgPaths.testimonials.p1426a480} fill="#002B6B" />
               </svg>
             </button>
-            <button className="bg-[#06f] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#0052cc] transition-all cursor-pointer">
+            <button 
+              onClick={handleNext}
+              className="bg-[#06f] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#0052cc] transition-all cursor-pointer"
+            >
               <svg className="size-5 md:size-6" fill="none" viewBox="0 0 16 15.556">
                 <path d={svgPaths.testimonials.p12c5be00} fill="white" />
               </svg>
             </button>
+          </div>
+
+          {/* Dots indicator */}
+          <div className="flex gap-2">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
+                  idx === currentIndex ? 'bg-white w-8' : 'bg-white/40 hover:bg-white/60'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -594,15 +629,41 @@ function TestimonialsSection() {
 
 // ============ FAQ SECTION ============
 
-function FaqSection() {
-  const [openFaq, setOpenFaq] = useState<number | null>(3);
+interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+}
 
-  const faqs = [
-    { id: 1, question: "How do I create an account on the job board?", answer: "" },
-    { id: 2, question: "How do I apply for a job through the platform?", answer: "" },
-    { id: 3, question: "How can I track the status of my job applications?", answer: "" },
-    { id: 4, question: "How do I create an account on the job board?", answer: "Use the search bar on the homepage to enter keywords related to your skills, job title, or preferred location. You can also use the advanced search filters to narrow down results by industry, job type (full-time, part-time, freelance), and experience level." },
-    { id: 5, question: "Is there a cost to use the job board, and what features are free?", answer: "" }
+function FaqSection() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqs: Faq[] = [
+    { 
+      id: 1, 
+      question: "How do I create an account on the platform?", 
+      answer: "Click on the 'Register Now' button at the top of the page. Fill in your basic information including name, email, and password. You'll receive a verification email to activate your account. Once verified, you can start using all our features immediately."
+    },
+    { 
+      id: 2, 
+      question: "What exams are covered on the platform?", 
+      answer: "We cover major entrance examinations including UPCAT, ACET, USTET, DCAT, and many more. Our platform includes comprehensive review materials for English, Mathematics, Science, Logical Reasoning, and Mechanical Technical subjects."
+    },
+    { 
+      id: 3, 
+      question: "How does the AI Tutor work?", 
+      answer: "Our AI Tutor uses advanced algorithms to understand your learning patterns and provide personalized explanations. You can ask questions anytime during your study sessions and get instant, detailed responses. It adapts to your pace and learning style to maximize understanding."
+    },
+    { 
+      id: 4, 
+      question: "Can I track my progress over time?", 
+      answer: "Yes! Our platform provides comprehensive analytics showing your performance across different subjects. You can view your quiz scores, track improvement over time, identify weak areas, and get recommendations for topics that need more practice."
+    },
+    { 
+      id: 5, 
+      question: "Is there a cost to use the platform?", 
+      answer: "We offer both free and premium plans. The free plan includes access to basic practice materials and limited AI assistance. Our premium plans provide unlimited access to all features, including advanced AI tutoring, full mock exams, and detailed analytics."
+    }
   ];
 
   return (
@@ -665,18 +726,20 @@ function FaqItem({ number, question, answer, isOpen, onClick }: { number: string
           <p className="font-['Manrope',sans-serif] font-medium text-[#002b6b] text-base md:text-[20px]">{number}</p>
         </div>
         
-        {isOpen && answer ? (
-          <div className="flex-1 flex flex-col gap-3 md:gap-4">
-            <p className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-lg md:text-[24px] leading-[1.2]">{question}</p>
-            <p className="font-['Manrope',sans-serif] text-[#414d60] text-sm md:text-[16px]">{answer}</p>
-          </div>
-        ) : (
-          <p className="flex-1 font-['ABeeZee',sans-serif] text-[#1e242c] text-lg md:text-[24px] leading-[1.2]">{question}</p>
-        )}
+        <div className="flex-1 flex flex-col gap-3 md:gap-4">
+          <p className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-lg md:text-[24px] leading-[1.2]">
+            {question}
+          </p>
+          {isOpen && (
+            <p className="font-['Manrope',sans-serif] text-[#414d60] text-sm md:text-[16px]">
+              {answer}
+            </p>
+          )}
+        </div>
         
-        <svg className="size-5 md:size-6 shrink-0 transition-transform" fill="none" viewBox="0 0 24 24">
+        <svg className={`size-5 md:size-6 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24">
           <path
-            d={isOpen ? svgPaths.faq.p1d907d00 : svgPaths.faq.p2aa6f900}
+            d={svgPaths.faq.p2aa6f900}
             fill="#0066FF"
           />
         </svg>
@@ -687,108 +750,315 @@ function FaqItem({ number, question, answer, isOpen, onClick }: { number: string
 
 // ============ CTA FOOTER SECTION ============
 
+// Footer Gradient Components
+function FooterGradient() {
+  return (
+    <div className="h-[2021.402px] relative w-504.75" data-name="Gradient">
+      <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
+          <g id="Gradient">
+            <g filter="url(#filter0_f_footer1)" id="Ellipse 29">
+              <ellipse cx="1026.52" cy="1438.46" fill="url(#paint0_linear_footer1)" rx="664.985" ry="673.184" transform="rotate(-128.459 1026.52 1438.46)" />
+            </g>
+            <g filter="url(#filter1_f_footer1)" id="Ellipse 28">
+              <ellipse cx="1299.73" cy="823.791" fill="#3B1FE7" rx="449.681" ry="454.849" />
+            </g>
+            <g filter="url(#filter2_f_footer1)" id="Ellipse 30">
+              <ellipse cx="1088.7" cy="728.258" fill="#FFC1DF" rx="367.337" ry="371.793" />
+            </g>
+            <g filter="url(#filter3_f_footer1)" id="Vector 109">
+              <path d={svgPaths.hero.p1bfe6040} fill="white" fillOpacity="0.85" />
+            </g>
+            <g filter="url(#filter4_f_footer1)" id="Vector 111">
+              <path d={svgPaths.hero.p3f085780} fill="white" fillOpacity="0.85" />
+            </g>
+            <g filter="url(#filter5_f_footer1)" id="Vector 110">
+              <path d={svgPaths.hero.p1f56c6d0} fill="url(#paint1_linear_footer1)" fillOpacity="0.7" />
+            </g>
+            <g filter="url(#filter6_f_footer1)" id="Vector 112">
+              <path d={svgPaths.hero.p22ce3c00} fill="white" fillOpacity="0.8" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="2049.31" id="filter0_f_footer1" width="2053.04" x="0" y="413.802">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1622.63" id="filter1_f_footer1" width="1612.29" x="493.586" y="12.4765">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1456.52" id="filter2_f_footer1" width="1447.6" x="364.901" y="5.42146e-06">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1292.36" id="filter3_f_footer1" width="1113.43" x="982.413" y="662.037">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="89.1162" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1093.29" id="filter4_f_footer1" width="768.989" x="1502.03" y="660.843">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="89.1162" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="986.866" id="filter5_f_footer1" width="857.407" x="840.07" y="893.548">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="62.3814" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1144.72" id="filter6_f_footer1" width="1151.24" x="393.902" y="987.815">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer1" stdDeviation="106.94" />
+            </filter>
+            <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_footer1" x1="852.385" x2="1026.52" y1="1786.37" y2="2111.64">
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="#391DE8" />
+            </linearGradient>
+            <linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear_footer1" x1="1472.62" x2="560.352" y1="1502.05" y2="650.165">
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function FooterGradient1() {
+  return (
+    <div className="h-[2021.402px] relative w-504.75" data-name="Gradient">
+      <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
+          <g id="Gradient">
+            <g filter="url(#filter0_f_footer2)" id="Ellipse 29">
+              <ellipse cx="1026.52" cy="1438.46" fill="url(#paint0_linear_footer2)" rx="664.985" ry="673.184" transform="rotate(-128.459 1026.52 1438.46)" />
+            </g>
+            <g filter="url(#filter1_f_footer2)" id="Ellipse 28">
+              <ellipse cx="1299.73" cy="823.791" fill="#3B1FE7" rx="449.681" ry="454.849" />
+            </g>
+            <g filter="url(#filter2_f_footer2)" id="Ellipse 30">
+              <ellipse cx="1088.7" cy="728.258" fill="#FFC1DF" rx="367.337" ry="371.793" />
+            </g>
+            <g filter="url(#filter3_f_footer2)" id="Vector 109">
+              <path d={svgPaths.hero.p1bfe6040} fill="white" fillOpacity="0.85" />
+            </g>
+            <g filter="url(#filter4_f_footer2)" id="Vector 111">
+              <path d={svgPaths.hero.p3f085780} fill="white" fillOpacity="0.85" />
+            </g>
+            <g filter="url(#filter5_f_footer2)" id="Vector 110">
+              <path d={svgPaths.hero.p1f56c6d0} fill="url(#paint1_linear_footer2)" fillOpacity="0.7" />
+            </g>
+            <g filter="url(#filter6_f_footer2)" id="Vector 112">
+              <path d={svgPaths.hero.p22ce3c00} fill="white" fillOpacity="0.8" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="2049.31" id="filter0_f_footer2" width="2053.04" x="0" y="413.802">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1622.63" id="filter1_f_footer2" width="1612.29" x="493.586" y="12.4765">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1456.52" id="filter2_f_footer2" width="1447.6" x="364.901" y="5.42146e-06">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="178.232" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1292.36" id="filter3_f_footer2" width="1113.43" x="982.413" y="662.037">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="89.1162" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1093.29" id="filter4_f_footer2" width="768.989" x="1502.03" y="660.843">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="89.1162" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="986.866" id="filter5_f_footer2" width="857.407" x="840.07" y="893.548">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="62.3814" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="1144.72" id="filter6_f_footer2" width="1151.24" x="393.902" y="987.815">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape" />
+              <feGaussianBlur result="effect1_foregroundBlur_footer2" stdDeviation="106.94" />
+            </filter>
+            <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_footer2" x1="852.385" x2="1026.52" y1="1786.37" y2="2111.64">
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="#391DE8" />
+            </linearGradient>
+            <linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear_footer2" x1="1472.62" x2="560.352" y1="1502.05" y2="650.164">
+              <stop stopColor="white" />
+              <stop offset="1" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function CtaFooterSection() {
   return (
-    <div className="bg-white flex flex-col items-center px-4 md:px-25 py-12 md:py-22 w-full">
-      <div className="w-full max-w-full md:max-w-310">
-        {/* CTA Box */}
-        <div className="relative bg-linear-to-b from-[#e6f0ff] to-[#d4e3ff] rounded-3xl md:rounded-[64px] overflow-hidden mb-12 md:mb-20">
-          <div className="flex flex-col items-center gap-4 md:gap-6 px-6 md:px-8 py-12 md:py-20 relative z-10">
-            <h2 className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-2xl md:text-[40px] text-center leading-[1.2] max-w-full md:max-w-175">
-              Join ambitious professionals and unlock your dream career today
-            </h2>
-            <p className="font-['Manrope',sans-serif] text-[#414d60] text-sm md:text-[16px] text-center max-w-full md:max-w-125">
-              Unlock your true potential and discover a world of opportunities that align with your skills, interests, and aspirations
-            </p>
-            
-            <div className="flex flex-col md:flex-row gap-2 md:gap-2 items-stretch md:items-center bg-white rounded-[100px] p-1 md:p-1 w-full max-w-full md:max-w-125">
-              <input
-                type="email"
-                placeholder="Your mail address"
-                className="flex-1 px-4 md:px-5 py-3 md:py-3 bg-transparent outline-none font-['Manrope',sans-serif] text-sm md:text-[16px]"
-              />
-              <button className="bg-[#06f] text-white px-6 md:px-8 py-3 md:py-3 rounded-[100px] font-['Manrope',sans-serif] font-bold hover:bg-[#0052cc] hover:scale-105 transition-all cursor-pointer">
-                Join Us
-              </button>
-            </div>
+    <div className="bg-white relative w-full overflow-hidden">
+      {/* Purple Gradient Background */}
+      <div className="absolute bottom-0 left-0 w-full h-150 md:h-227 overflow-hidden pointer-events-none">
+        <div className="absolute flex h-[2021.402px] items-center justify-center left-[50%] md:left-107.75 -top-72.5 w-504.75 -translate-x-1/2 md:translate-x-0">
+          <div className="flex-none rotate-180">
+            <FooterGradient />
           </div>
         </div>
-
-        {/* Footer */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo & Info */}
-          <div className="md:col-span-1">
-            <p className="font-['General_Sans',sans-serif] font-medium text-[#06f] text-xl md:text-[24px] mb-3 md:mb-4">MH. Masters Hub</p>
-            <div className="text-[#414d60] text-xs md:text-[14px] space-y-2 font-['Manrope',sans-serif]">
-              <p><strong>Corporate Head Office:</strong> 3787 Jerry Dove Drive, Florence, South Carolina, 29501, United States.</p>
-              <p><strong>Phone:</strong> 843-496-7759</p>
-              <p><strong>Fax:</strong> 02-222264303</p>
-              <p><strong>Email:</strong> info@mastershub.com</p>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[16px] mb-3 md:mb-4">Quick Links</h3>
-            <div className="flex flex-col gap-2 md:gap-2 font-['Manrope',sans-serif] text-[#414d60] text-xs md:text-[14px]">
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Pricing</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Jobs</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Employeer</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Careers</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Contact Us</a>
-            </div>
-          </div>
-
-          {/* Others */}
-          <div>
-            <h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[16px] mb-3 md:mb-4">Others</h3>
-            <div className="flex flex-col gap-2 md:gap-2 font-['Manrope',sans-serif] text-[#414d60] text-xs md:text-[14px]">
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">How it works</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Terms and condition</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">About Us</a>
-            </div>
-          </div>
-
-          {/* About us */}
-          <div>
-            <h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[16px] mb-3 md:mb-4">About us</h3>
-            <div className="flex flex-col gap-2 md:gap-2 font-['Manrope',sans-serif] text-[#414d60] text-xs md:text-[14px]">
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Company milestone</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Web mail</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Board of Directors</a>
-              <a href="#" className="hover:text-[#06f] cursor-pointer transition-colors">Senior Management</a>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-6 md:mt-10 pt-6 md:pt-10 border-t border-[#edeef0] gap-4">
-          <p className="font-['Manrope',sans-serif] text-[#414d60] text-xs md:text-[14px]">©2024, All rights reserved</p>
-          <div className="flex gap-3 md:gap-4">
-            <a href="#" className="text-[#06f] hover:scale-110 transition-transform cursor-pointer">
-              <svg className="size-5 md:size-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d={svgPaths.cta.p10032a80} />
-              </svg>
-            </a>
-            <a href="#" className="text-[#06f] hover:scale-110 transition-transform cursor-pointer">
-              <svg className="size-5 md:size-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d={svgPaths.cta.p113f3a80} />
-              </svg>
-            </a>
-            <a href="#" className="text-[#06f] hover:scale-110 transition-transform cursor-pointer">
-              <svg className="size-5 md:size-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d={svgPaths.cta.p3ffa0c00} />
-              </svg>
-            </a>
-            <a href="#" className="text-[#06f] hover:scale-110 transition-transform cursor-pointer">
-              <svg className="size-5 md:size-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d={svgPaths.cta.p6a6b10} />
-              </svg>
-            </a>
+        <div className="absolute flex h-[2021.402px] items-center justify-center -left-271.25 -top-72.5 w-504.75">
+          <div className="-scale-y-100 flex-none">
+            <FooterGradient1 />
           </div>
         </div>
       </div>
+
+		{/* Content */}
+		<div className="relative z-10 flex flex-col items-center px-4 md:px-25 py-12 md:py-22 w-full">
+			<div className="w-full max-w-full md:max-w-310">
+
+			{/* CTA Box */}
+			<div className="relative bg-linear-to-b from-[#e6f0ff] to-[#d4e3ff] rounded-3xl md:rounded-[64px] overflow-hidden mb-16 md:mb-24 border border-[#c8dff5]">
+				{/* Decorative blobs */}
+				<div className="absolute -top-20 -left-20 w-64 h-64 bg-[#dbeafe] rounded-full blur-3xl opacity-60 pointer-events-none" />
+				<div className="absolute -bottom-16 -right-16 w-56 h-56 bg-[#bfdbfe] rounded-full blur-3xl opacity-50 pointer-events-none" />
+
+				<div className="flex flex-col items-center gap-5 md:gap-6 px-6 md:px-12 py-14 md:py-22 relative z-10">
+				{/* Badge */}
+				<div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm border border-[#c8dff5] px-4 py-1.5 rounded-full">
+					<span className="size-2 rounded-full bg-[#06f]" />
+					<p className="font-['Manrope',sans-serif] font-medium text-[#0066FF] text-xs md:text-sm">Ready to get started?</p>
+				</div>
+
+				<h2 className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-2xl md:text-[40px] text-center leading-[1.2] max-w-full md:max-w-175">
+					Join ambitious professionals and unlock your dream career today
+				</h2>
+				<p className="font-['Manrope',sans-serif] text-[#414d60] text-sm md:text-[16px] text-center max-w-full md:max-w-125 leading-relaxed">
+					Unlock your true potential and discover a world of opportunities that align with your skills, interests, and aspirations
+				</p>
+
+				{/* Email Input */}
+				<div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center bg-white rounded-full p-1.5 w-full max-w-full md:max-w-125 shadow-[0_4px_24px_0px_rgba(0,43,107,0.1)] border border-[#edeef0]">
+					<div className="flex-1 flex items-center gap-3 px-5">
+					<svg className="size-5 shrink-0 text-[#999]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+						<path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25v-10.5a2.25 2.25 0 0 1 2.25-2.25h15a2.25 2.25 0 0 1 2.25 2.25Z" strokeLinecap="round" strokeLinejoin="round" />
+						<path d="M3.75 6.75l8.25 5.25 8.25-5.25" strokeLinecap="round" strokeLinejoin="round" />
+					</svg>
+					<input
+						type="email"
+						placeholder="Enter your email address"
+						className="flex-1 py-3 bg-transparent outline-none border-none ring-0 font-['Manrope',sans-serif] text-sm md:text-[16px] text-[#1e242c] placeholder-[#999]"
+					/>
+					</div>
+					<button className="bg-[#06f] text-white px-7 py-3.5 rounded-full font-['Manrope',sans-serif] font-bold text-sm md:text-[16px] hover:bg-[#0052cc] hover:shadow-[0_4px_16px_0px_rgba(0,102,255,0.4)] transition-all cursor-pointer shrink-0">
+					Join Us
+					</button>
+				</div>
+
+				{/* Trust line */}
+				<p className="font-['Manrope',sans-serif] text-[#6c7787] text-xs text-center mt-1">
+					No credit card required · Free forever · Cancel anytime
+				</p>
+				</div>
+			</div>
+
+			{/* Footer Grid */}
+			<div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 pb-10 md:pb-12">
+				{/* Logo & Info */}
+				<div className="col-span-2 md:col-span-1">
+				<p className="font-['General_Sans',sans-serif] font-medium text-[#06f] text-xl md:text-[24px] mb-4">Matalino</p>
+				<p className="font-['Manrope',sans-serif] text-[#6c7787] text-xs md:text-[13px] leading-relaxed mb-4">
+					Your number one platform for entrance exam review. Powered by AI to help you achieve your scholarship dreams.
+				</p>
+				<div className="text-[#414d60] text-xs md:text-[13px] space-y-1.5 font-['Manrope',sans-serif]">
+					<p><span className="text-[#1e242c] font-semibold">HQ:</span> Ibo, Lapu-Lapu City</p>
+					<p><span className="text-[#1e242c] font-semibold">Phone:</span> 843-496-7759</p>
+					<p><span className="text-[#1e242c] font-semibold">Email:</span> info@matalino.com</p>
+				</div>
+				</div>
+
+				{/* Quick Links */}
+				<div>
+				<h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[14px] uppercase tracking-wider mb-4">Quick Links</h3>
+        <div className="flex flex-col gap-3 font-['Manrope',sans-serif] text-[#6c7787] text-xs md:text-[13px]">
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Pricing</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Jobs</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Employer</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Careers</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Contact Us</a>
+        </div>
+				</div>
+
+				{/* Others */}
+				<div>
+				<h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[14px] uppercase tracking-wider mb-4">Others</h3>
+        <div className="flex flex-col gap-3 font-['Manrope',sans-serif] text-[#6c7787] text-xs md:text-[13px]">
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">How it works</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Terms and Conditions</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Privacy Policy</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">About Us</a>
+        </div>
+				</div>
+
+				{/* About Us */}
+				<div>
+				<h3 className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-sm md:text-[14px] uppercase tracking-wider mb-4">About Us</h3>
+        <div className="flex flex-col gap-3 font-['Manrope',sans-serif] text-[#6c7787] text-xs md:text-[13px]">
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Company Milestone</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Web Mail</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Board of Directors</a>
+          <a href="#" className="hover:text-[#06f] cursor-pointer hover:translate-x-1 transition-all duration-200">Senior Management</a>
+        </div>
+				</div>
+			</div>
+
+			{/* Bottom Bar */}
+			<div className="flex flex-col md:flex-row justify-between items-center pt-6 md:pt-8 border-t border-[#edeef0] gap-4">
+				<p className="font-['Manrope',sans-serif] text-[#6c7787] text-xs md:text-[13px]">© 2024 Matalino. All rights reserved.</p>
+
+				{/* Social Icons */}
+				<div className="flex gap-2">
+				{/* Facebook */}
+				<a href="#" className="size-8 md:size-9 flex items-center justify-center rounded-full bg-[#f3f4f6] text-[#6c7787] hover:bg-[#e6f0ff] hover:text-[#06f] transition-all cursor-pointer">
+					<svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+					</svg>
+				</a>
+				{/* Twitter / X */}
+				<a href="#" className="size-8 md:size-9 flex items-center justify-center rounded-full bg-[#f3f4f6] text-[#6c7787] hover:bg-[#e6f0ff] hover:text-[#06f] transition-all cursor-pointer">
+					<svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+					</svg>
+				</a>
+				{/* Instagram */}
+				<a href="#" className="size-8 md:size-9 flex items-center justify-center rounded-full bg-[#f3f4f6] text-[#6c7787] hover:bg-[#e6f0ff] hover:text-[#06f] transition-all cursor-pointer">
+					<svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+					</svg>
+				</a>
+				{/* LinkedIn */}
+				<a href="#" className="size-8 md:size-9 flex items-center justify-center rounded-full bg-[#f3f4f6] text-[#6c7787] hover:bg-[#e6f0ff] hover:text-[#06f] transition-all cursor-pointer">
+					<svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+					</svg>
+				</a>
+				</div>
+			</div>
+			</div>
+		</div>
     </div>
   );
 }

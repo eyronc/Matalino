@@ -2,7 +2,7 @@ import svgPaths from "./svg-fd87zquymr";
 
 function Gradient() {
   return (
-    <div className="h-[2021.402px] relative w-[2019px]" data-name="Gradient">
+    <div className="h-[2021.402px] relative w-504.75" data-name="Gradient">
       <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
           <g id="Gradient">
@@ -81,7 +81,7 @@ function Gradient() {
 
 function Gradient1() {
   return (
-    <div className="h-[2021.402px] relative w-[2019px]" data-name="Gradient">
+    <div className="h-[2021.402px] relative w-504.75" data-name="Gradient">
       <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
           <g id="Gradient">
@@ -160,14 +160,14 @@ function Gradient1() {
 
 function BackgroudnGradient() {
   return (
-    <div className="absolute bottom-0 h-[908px] left-1/2 overflow-clip translate-x-[-50%] w-[1440px]" data-name="Backgroudn Gradient">
-      <div className="absolute flex h-[2021.402px] items-center justify-center left-[431px] top-[-290px] w-[2019px]">
-        <div className="flex-none rotate-[180deg]">
+    <div className="absolute bottom-0 h-227 left-1/2 overflow-clip translate-x-[-50%] w-8xl" data-name="Backgroudn Gradient">
+      <div className="absolute flex h-[2021.402px] items-center justify-center left-107.75 top-72.5 w-504.75">
+        <div className="flex-none rotate-180">
           <Gradient />
         </div>
       </div>
-      <div className="absolute flex h-[2021.402px] items-center justify-center left-[-1085px] top-[-290px] w-[2019px]">
-        <div className="flex-none scale-y-[-100%]">
+      <div className="absolute flex h-[2021.402px] items-center justify-center -left-271.25 -top-72.5 w-504.75">
+        <div className="flex-none -scale-y-100">
           <Gradient1 />
         </div>
       </div>
@@ -177,10 +177,10 @@ function BackgroudnGradient() {
 
 function Icon() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-0 py-[18px] relative rounded-[12px] shrink-0" data-name="Icon">
-      <p className="css-ew64yg font-['Abhaya_Libre:Bold',sans-serif] leading-[0] not-italic relative shrink-0 text-[#06f] text-[0px] text-[27px]">
-        <span className="leading-[1.5]">{`MH. `}</span>
-        <span className="font-['General_Sans:Medium',sans-serif] leading-[1.5]">Masters Hub</span>
+    <div className="content-stretch flex flex-col items-center justify-center px-0 py-4.5 relative rounded-lg shrink-0" data-name="Icon">
+      <p className="css-ew64yg font-['Abhaya_Libre:Bold',sans-serif] leading-0 not-italic relative shrink-0 text-[#06f] text-[27px]">
+        <span className="leading-normal">{`MH. `}</span>
+        <span className="font-['General_Sans:Medium',sans-serif] leading-normal">Masters Hub</span>
       </p>
     </div>
   );
@@ -188,7 +188,7 @@ function Icon() {
 
 function Logo() {
   return (
-    <div className="content-stretch flex items-center relative shrink-0 w-[187px]" data-name="Logo">
+    <div className="content-stretch flex items-center relative shrink-0 w-46.75" data-name="Logo">
       <Icon />
     </div>
   );
@@ -196,30 +196,30 @@ function Logo() {
 
 function Frame10() {
   return (
-    <div className="content-stretch flex flex-col gap-[15px] items-start relative shrink-0">
+    <div className="content-stretch flex flex-col gap-3.75 items-start relative shrink-0">
       <Logo />
-      <div className="css-g0mm18 font-['CF_Fortusnova_Demo:Bold',sans-serif] leading-[0] not-italic relative shrink-0 text-[#06f] text-[0px]">
+      <div className="css-g0mm18 font-['CF_Fortusnova_Demo:Bold',sans-serif] leading-0 not-italic relative shrink-0 text-[#06f]">
         <p className="css-ew64yg mb-0 text-[#282828] text-[16px]">
-          <span className="font-['Manrope:Bold',sans-serif] font-bold leading-[1.5]">Corporate Head Office:</span>
-          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-[1.5]"> </span>
-          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-[1.5]">{`3787 Jerry Dove Drive, Florence, `}</span>
+          <span className="font-['Manrope:Bold',sans-serif] font-bold leading-normal">Corporate Head Office:</span>
+          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-normal"> </span>
+          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-normal">{`3787 Jerry Dove Drive, Florence, `}</span>
         </p>
-        <p className="css-ew64yg font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] mb-0 text-[#282828] text-[16px]">South Carolina, 29501, United States.</p>
-        <p className="css-ew64yg leading-[1.5] mb-0 text-[16px]">&nbsp;</p>
+        <p className="css-ew64yg font-['Manrope:Regular',sans-serif] font-normal leading-normal mb-0 text-[#282828] text-[16px]">South Carolina, 29501, United States.</p>
+        <p className="css-ew64yg leading-normal mb-0 text-[16px]">&nbsp;</p>
         <p className="css-ew64yg mb-0 text-[#282828]">
-          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-[1.5] text-[18px]">Phone:</span>
-          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-[1.5] text-[16px]"> </span>
-          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] text-[16px]">843-496-7759</span>
+          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-normal text-[18px]">Phone:</span>
+          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-normal text-[16px]"> </span>
+          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-normal text-[16px]">843-496-7759</span>
         </p>
         <p className="css-ew64yg mb-0 text-[#282828]">
-          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-[1.5] text-[18px]">Fax:</span>
-          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-[1.5] text-[16px]"> </span>
-          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] text-[16px]">02-222264303</span>
+          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-normal text-[18px]">Fax:</span>
+          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-normal text-[16px]"> </span>
+          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-normal text-[16px]">02-222264303</span>
         </p>
         <p className="css-ew64yg text-[#282828]">
-          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-[1.5] text-[18px]">Email:</span>
-          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-[1.5] text-[16px]"> </span>
-          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] text-[16px]">info@mastershub.com</span>
+          <span className="font-['Manrope:SemiBold',sans-serif] font-semibold leading-normal text-[18px]">Email:</span>
+          <span className="font-['Plus_Jakarta_Sans:Regular',sans-serif] font-normal leading-normal text-[16px]"> </span>
+          <span className="font-['Manrope:Regular',sans-serif] font-normal leading-normal text-[16px]">info@mastershub.com</span>
         </p>
       </div>
     </div>
@@ -228,7 +228,7 @@ function Frame10() {
 
 function Frame1() {
   return (
-    <div className="content-stretch flex flex-col gap-[13px] items-start leading-[1.5] relative shrink-0 w-[132px]">
+    <div className="content-stretch flex flex-col gap-3.25 items-start leading-normal relative shrink-0 w-33">
       <p className="css-4hzbpn font-['Manrope:Bold',sans-serif] font-bold relative shrink-0 text-[#1e242c] text-[20px] w-full">Quick Links</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">Pricing</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">Jobs</p>
@@ -241,7 +241,7 @@ function Frame1() {
 
 function Frame2() {
   return (
-    <div className="content-stretch flex flex-col gap-[8px] items-start leading-[1.5] relative shrink-0 w-[190px]">
+    <div className="content-stretch flex flex-col gap-2 items-start leading-normal relative shrink-0 w-47.5">
       <p className="css-4hzbpn font-['Manrope:Bold',sans-serif] font-bold relative shrink-0 text-[#1e242c] text-[20px] w-full">Others</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">How it works</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">Terms and condition</p>
@@ -253,7 +253,7 @@ function Frame2() {
 
 function Frame3() {
   return (
-    <div className="content-stretch flex flex-col gap-[13px] items-start leading-[1.5] relative shrink-0">
+    <div className="content-stretch flex flex-col gap-3.25 items-start leading-normal relative shrink-0">
       <p className="css-4hzbpn font-['Manrope:Bold',sans-serif] font-bold relative shrink-0 text-[#1e242c] text-[20px] w-full">About us</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">Company milestone</p>
       <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal relative shrink-0 text-[#414d60] text-[16px] w-full">Web mail</p>
@@ -276,7 +276,7 @@ function Frame8() {
 
 function Icon1() {
   return (
-    <div className="relative shrink-0 size-[26px]" data-name="Icon">
+    <div className="relative shrink-0 size-6.5" data-name="Icon">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26 26">
         <g id="Icon">
           <path d={svgPaths.p6a6b10} fill="var(--fill-0, #002B6B)" id="Vector" />
@@ -288,7 +288,7 @@ function Icon1() {
 
 function Icon2() {
   return (
-    <div className="relative shrink-0 size-[26px]" data-name="Icon">
+    <div className="relative shrink-0 size-6.5" data-name="Icon">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26 26">
         <g id="Icon">
           <path d={svgPaths.p3ffa0c00} fill="var(--fill-0, #002B6B)" id="Vector" />
@@ -300,7 +300,7 @@ function Icon2() {
 
 function Icon3() {
   return (
-    <div className="relative shrink-0 size-[26px]" data-name="Icon">
+    <div className="relative shrink-0 size-6.5" data-name="Icon">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26 26">
         <g id="Icon">
           <path d={svgPaths.p113f3a80} fill="var(--fill-0, #002B6B)" id="Vector" />
@@ -312,7 +312,7 @@ function Icon3() {
 
 function Icon4() {
   return (
-    <div className="relative shrink-0 size-[24px]" data-name="Icon">
+    <div className="relative shrink-0 size-6" data-name="Icon">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
         <g id="Icon">
           <path d={svgPaths.p10032a80} fill="var(--fill-0, #002B6B)" id="Vector" />
@@ -324,7 +324,7 @@ function Icon4() {
 
 function Frame4() {
   return (
-    <div className="content-stretch flex gap-[20px] items-center relative shrink-0">
+    <div className="content-stretch flex gap-5 items-center relative shrink-0">
       <Icon1 />
       <Icon2 />
       <Icon3 />
@@ -336,7 +336,7 @@ function Frame4() {
 function Frame7() {
   return (
     <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#002b6b] text-[16px] w-[400px]">©2024 All rights reserved</p>
+      <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal leading-normal relative shrink-0 text-[#002b6b] text-[16px] w-100">©2024 All rights reserved</p>
       <Frame4 />
     </div>
   );
@@ -344,7 +344,7 @@ function Frame7() {
 
 function Footer() {
   return (
-    <div className="absolute bg-[#fafafa] content-stretch flex flex-col gap-[100px] items-start left-0 overflow-clip pb-[48px] pt-[316px] px-[100px] top-[196px] w-[1440px]" data-name="Footer">
+    <div className="absolute bg-[#fafafa] content-stretch flex flex-col gap-25 items-start left-0 overflow-clip pb-12 pt-79 px-25 top-49 w-8xl" data-name="Footer">
       <BackgroudnGradient />
       <Frame8 />
       <Frame7 />
@@ -354,7 +354,7 @@ function Footer() {
 
 function Gradient2() {
   return (
-    <div className="h-[2021.402px] relative w-[2019px]" data-name="Gradient">
+    <div className="h-[2021.402px] relative w-504.75" data-name="Gradient">
       <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
           <g id="Gradient">
@@ -433,7 +433,7 @@ function Gradient2() {
 
 function Gradient3() {
   return (
-    <div className="absolute h-[2021.402px] left-[-1085px] top-[-750px] w-[2019px]" data-name="Gradient">
+    <div className="absolute h-[2021.402px] -left-271.25 -top-187.5 w-504.75" data-name="Gradient">
       <div className="absolute inset-[-17.63%_-8.23%_-4.22%_-4.25%]">
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2271.01 2463.12">
           <g id="Gradient">
@@ -512,9 +512,9 @@ function Gradient3() {
 
 function BackgroudnGradient1() {
   return (
-    <div className="absolute h-[768px] left-1/2 overflow-clip top-[-240px] translate-x-[-50%] w-[1440px]" data-name="Backgroudn Gradient">
-      <div className="absolute flex h-[2021.402px] items-center justify-center left-[431px] top-[-750px] w-[2019px]">
-        <div className="flex-none rotate-[180deg] scale-y-[-100%]">
+    <div className="absolute h-192 left-1/2 overflow-clip -top-60 translate-x-[-50%] w-8xl" data-name="Backgroudn Gradient">
+      <div className="absolute flex h-[2021.402px] items-center justify-center left-107.75 -top-187.5 w-504.75">
+        <div className="flex-none rotate-180 -scale-y-100">
           <Gradient2 />
         </div>
       </div>
@@ -525,16 +525,16 @@ function BackgroudnGradient1() {
 
 function Frame5() {
   return (
-    <div className="content-stretch flex flex-col gap-[16px] items-center justify-center relative shrink-0 text-center w-full">
-      <p className="css-4hzbpn font-['General_Sans:Medium',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[#1e242c] text-[40px] w-[min-content]">Join ambitious professionals and unlock your dream career today</p>
-      <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal leading-[1.5] relative shrink-0 text-[#414d60] text-[16px] w-[561px]">Unlock your true potential and discover a world of opportunities that align with your skills, interests, and aspirations</p>
+    <div className="content-stretch flex flex-col gap-4 items-center justify-center relative shrink-0 text-center w-full">
+      <p className="css-4hzbpn font-['General_Sans:Medium',sans-serif] leading-[1.2] min-w-full not-italic relative shrink-0 text-[#1e242c] text-[40px] w-min">Join ambitious professionals and unlock your dream career today</p>
+      <p className="css-4hzbpn font-['Manrope:Regular',sans-serif] font-normal leading-normal relative shrink-0 text-[#414d60] text-[16px] w-140.25">Unlock your true potential and discover a world of opportunities that align with your skills, interests, and aspirations</p>
     </div>
   );
 }
 
 function Frame() {
   return (
-    <div className="relative shrink-0 size-[24px]" data-name="Frame">
+    <div className="relative shrink-0 size-6" data-name="Frame">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
         <g id="Frame">
           <path d={svgPaths.pa752400} id="Vector" stroke="var(--stroke-0, #002B6B)" strokeLinejoin="round" strokeWidth="1.5" />
@@ -547,26 +547,26 @@ function Frame() {
 
 function Input() {
   return (
-    <div className="bg-white content-stretch flex gap-[8px] items-center px-[24px] py-[16px] relative rounded-[56px] shrink-0 w-[384px]" data-name="Input">
+    <div className="bg-white content-stretch flex gap-2 items-center px-6 py-4 relative rounded-[56px] shrink-0 w-[384px]" data-name="Input">
       <div aria-hidden="true" className="absolute border border-[#ededed] border-solid inset-0 pointer-events-none rounded-[56px] shadow-[8px_8px_56px_0px_rgba(0,0,0,0.05)]" />
       <Frame />
-      <p className="css-4hzbpn flex-[1_0_0] font-['Manrope:Medium',sans-serif] font-medium leading-[1.5] min-h-px min-w-px relative text-[#848d9b] text-[16px]">Your mail address</p>
+      <p className="css-4hzbpn flex-[1_0_0] font-['Manrope:Medium',sans-serif] font-medium leading-normal min-h-px min-w-px relative text-[#848d9b] text-[16px]">Your mail address</p>
     </div>
   );
 }
 
 function Button() {
   return (
-    <div className="bg-[#06f] content-stretch flex items-start px-[48px] py-[16px] relative rounded-[100px] shrink-0" data-name="Button">
+    <div className="bg-[#06f] content-stretch flex items-start px-12 py-4 relative rounded-[100px] shrink-0" data-name="Button">
       <div aria-hidden="true" className="absolute border border-[#3385ff] border-solid inset-0 pointer-events-none rounded-[100px]" />
-      <p className="css-ew64yg font-['Manrope:Bold',sans-serif] font-bold leading-[1.5] relative shrink-0 text-[16px] text-white">Join Us</p>
+      <p className="css-ew64yg font-['Manrope:Bold',sans-serif] font-bold leading-normal relative shrink-0 text-[16px] text-white">Join Us</p>
     </div>
   );
 }
 
 function Frame9() {
   return (
-    <div className="content-stretch flex gap-[8px] items-start justify-center relative shrink-0 w-full">
+    <div className="content-stretch flex gap-2 items-start justify-center relative shrink-0 w-full">
       <Input />
       <Button />
     </div>
@@ -575,7 +575,7 @@ function Frame9() {
 
 function Frame6() {
   return (
-    <div className="content-stretch flex flex-col gap-[32px] items-center justify-center relative shrink-0 w-[670px]">
+    <div className="content-stretch flex flex-col gap-8 items-center justify-center relative shrink-0 w-167.5">
       <Frame5 />
       <Frame9 />
     </div>
@@ -584,7 +584,7 @@ function Frame6() {
 
 function Cta() {
   return (
-    <div className="absolute bg-[#fafafa] content-stretch flex items-center justify-between left-[100px] overflow-clip pb-[56px] pt-[88px] px-0 rounded-[24px] shadow-[0px_16px_40px_0px_rgba(57,29,232,0.08)] top-0 w-[1240px]" data-name="CTA">
+    <div className="absolute bg-[#fafafa] content-stretch flex items-center justify-between left-25 overflow-clip pb-14 pt-22 px-0 rounded-4xl shadow-[0px_16px_40px_0px_rgba(57,29,232,0.08)] top-0 w-310" data-name="CTA">
       <BackgroudnGradient1 />
       <Frame6 />
     </div>

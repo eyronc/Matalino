@@ -1,4 +1,3 @@
-import React from "react";
 import { dashboardContents } from "../constants/contents";
 
 function Dashboard() {
@@ -21,7 +20,7 @@ function Dashboard() {
             className="
               flex items-start gap-4 p-5
               bg-white border border-gray-200 rounded-2xl
-              hover:shadow-md transition-shadow
+              hover:shadow-md transition-shadow cursor-pointer
             "
           >
             <div className="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
