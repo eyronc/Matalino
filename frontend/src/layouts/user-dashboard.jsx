@@ -13,15 +13,9 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { useDispatch, useSelector } from "react-redux"
-import Dashboard from "../pages/Dashboard";
-import Lessons from "../pages/Lessons";
-import Exams from "../pages/Exams";
-import Notes from "../pages/Notes";
+import { Outlet } from "react-router"
 
 export default function UserDashboardLayout() {
-  const page = useSelector((state) => state.page.value);
-  const pages = [<Dashboard />, <Lessons />, <Exams />, <Notes />];
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -49,7 +43,7 @@ export default function UserDashboardLayout() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-        {pages[page]}
+          <Outlet />
         </div>
       </SidebarInset>
     </SidebarProvider>
