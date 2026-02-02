@@ -201,6 +201,13 @@ function HeroSection() {
     window.location.href = '/account';
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="bg-white relative w-full overflow-hidden" data-name="Hero">
       {/* Background Gradient - Fixed positioning */}
@@ -213,8 +220,8 @@ function HeroSection() {
         <Gradient1 />
       </div>
       
-      {/* Navbar */}
-      <div className="relative backdrop-blur-[70px] max-w-full md:max-w-363.25 mx-4 md:mx-auto flex flex-wrap gap-4 md:gap-42.5 items-center justify-between px-4 md:px-25.5 py-3 md:py-3 mt-4 md:mt-5.75 rounded-full z-10">
+      {/* Navbar - Sticky */}
+      <div className="sticky top-4 backdrop-blur-[70px] max-w-full md:max-w-363.25 mx-4 md:mx-auto flex flex-wrap gap-4 md:gap-42.5 items-center justify-between px-4 md:px-25.5 py-3 md:py-3 mt-4 md:mt-5.75 rounded-full z-50">
         {/* Logo */}
         <div className="flex items-center">
           <p className="font-sans text-lg md:text-[23px] text-white py-2 md:py-4.5">Matalino</p>
@@ -222,10 +229,10 @@ function HeroSection() {
 
         {/* Menu - Hidden on mobile */}
         <div className="hidden lg:flex font-sans gap-10 items-center text-[#272f3a] text-[16px]">
-          <button className="hover:text-[#0066FF] transition-colors cursor-pointer">Subjects</button>
-          <button className="hover:text-[#0066FF] transition-colors cursor-pointer">Features</button>
-          <button className="hover:text-[#0066FF] transition-colors cursor-pointer">How It Works</button>
-          <button className="hover:text-[#0066FF] transition-colors cursor-pointer">Exams</button>
+          <button onClick={() => scrollToSection('subjects')} className="hover:text-[#0066FF] transition-colors cursor-pointer">Subjects</button>
+          <button onClick={() => scrollToSection('features')} className="hover:text-[#0066FF] transition-colors cursor-pointer">Features</button>
+          <button onClick={() => scrollToSection('how-it-works')} className="hover:text-[#0066FF] transition-colors cursor-pointer">How It Works</button>
+          <button onClick={() => scrollToSection('faq')} className="hover:text-[#0066FF] transition-colors cursor-pointer">FAQ</button>
         </div>
 
         {/* Register Button */}
@@ -236,7 +243,7 @@ function HeroSection() {
           <p className="font-sans font-bold text-sm md:text-[16px] text-white">Register Now</p>
           <div className="bg-white flex items-center justify-center p-3 md:p-5 rounded-[100px] size-8 md:size-10 group-hover:scale-110 transition-transform">
             <svg className="block size-4 md:size-6" fill="none" preserveAspectRatio="none" viewBox="0 0 12.021 12.021">
-              <path d={svgPaths.hero.pef3ef00} fill="#0066FF" />
+              <path d={svgPaths.hero.pef3ef00} stroke="#0066FF" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </div>
         </button>
@@ -365,7 +372,7 @@ function SubjectsSection() {
   };
 
   return (
-    <div className="bg-[#fafafa] flex flex-col gap-6 md:gap-10 items-center px-4 md:px-25 py-12 md:py-22 w-full">
+    <div id="subjects" className="bg-[#fafafa] flex flex-col gap-6 md:gap-10 items-center px-4 md:px-25 py-12 md:py-22 w-full">
       <h2 className="font-['ABeeZee',sans-serif] text-3xl md:text-[56px] text-black text-center leading-[1.2]">
         Learn the coverage for the exam
       </h2>
@@ -373,11 +380,41 @@ function SubjectsSection() {
       {/* Tabs */}
       <div className="flex gap-2 md:gap-2 items-start w-full max-w-full md:max-w-310 border-b border-[#c6cad1] overflow-x-auto">
         {[
-          { id: 'english' as const, name: 'English', paths: [svgPaths.subjects.p213bf800, svgPaths.subjects.paf0b780, svgPaths.subjects.p1991e700], stroke: true },
-          { id: 'math' as const, name: 'Mathematics', paths: [svgPaths.subjects.p3f947d00], stroke: true },
-          { id: 'science' as const, name: 'Science', paths: [svgPaths.subjects.p20659900], stroke: true },
-          { id: 'logic' as const, name: 'Logical Reasoning', paths: [svgPaths.subjects.p1b72dd00], stroke: false },
-          { id: 'mechanical' as const, name: 'Mechanical Technical', paths: [svgPaths.subjects.p1a248480], stroke: true }
+          { 
+            id: 'english' as const, 
+            name: 'English',
+            icon: <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          },
+          { 
+            id: 'math' as const, 
+            name: 'Mathematics',
+            icon: <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+            </svg>
+          },
+          { 
+            id: 'science' as const, 
+            name: 'Science',
+            icon: <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+            </svg>
+          },
+          { 
+            id: 'logic' as const, 
+            name: 'Logical Reasoning',
+            icon: <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+          },
+          { 
+            id: 'mechanical' as const, 
+            name: 'Mechanical Technical',
+            icon: <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+            </svg>
+          }
         ].map((subject) => (
           <button
             key={subject.id}
@@ -388,28 +425,9 @@ function SubjectsSection() {
                 : 'hover:bg-[#e6f0ff]/50'
             }`}
           >
-            <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24">
-              {subject.paths.map((path, idx) => (
-                subject.stroke ? (
-                  <path 
-                    key={idx} 
-                    d={path} 
-                    stroke={activeTab === subject.id ? '#0066FF' : '#6C7787'} 
-                    className="group-hover:stroke-[#0066FF] transition-colors"
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth="1.5" 
-                  />
-                ) : (
-                  <path 
-                    key={idx} 
-                    d={path} 
-                    fill={activeTab === subject.id ? '#0066FF' : '#6C7787'} 
-                    className="group-hover:fill-[#0066FF] transition-colors"
-                  />
-                )
-              ))}
-            </svg>
+            <div className={activeTab === subject.id ? 'text-[#0066FF]' : 'text-[#6C7787] group-hover:text-[#0066FF]'}>
+              {subject.icon}
+            </div>
             <p className={`font-['Manrope',sans-serif] text-xs md:text-[16px] transition-colors ${
               activeTab === subject.id ? 'font-medium text-[#06f]' : 'text-[#6c7787] group-hover:text-[#06f]'
             }`}>
@@ -494,7 +512,7 @@ function SubjectsSection() {
 
 function FeaturesSection() {
   return (
-    <div className="bg-[#fafafa] w-full py-12 md:py-22 px-4">
+    <div id="features" className="bg-[#fafafa] w-full py-12 md:py-22 px-4">
       <div className="max-w-full md:max-w-8xl mx-auto">
         {/* Title */}
         <h2 className="font-['ABeeZee',sans-serif] text-[#1e242c] text-3xl md:text-[56px] text-center leading-[1.2] mb-12 md:mb-20">
@@ -534,12 +552,8 @@ function FeaturesSection() {
 function FeatureCard({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="bg-white flex flex-col gap-3 md:gap-4 items-center p-4 md:p-6 rounded-3xl border border-[#edeef0] shadow-[10px_25px_100px_0px_rgba(0,43,107,0.25)] hover:shadow-[10px_25px_120px_0px_rgba(0,43,107,0.35)] hover:scale-105 transition-all cursor-pointer">
-      <svg className="size-10 md:size-12" fill="none" viewBox="0 0 48 48">
-        <path d={svgPaths.features.p225a7040} stroke="#002B6B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-        <path d="M12.832 39.9218H22.5384" stroke="#002B6B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-        <path d={svgPaths.features.ped59fc0} stroke="#002B6B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-        <path d={svgPaths.features.p33989fb0} stroke="#002B6B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
-        <path d="M34.3398 35.3458V35.3658" stroke="#002B6B" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" />
+      <svg className="size-10 md:size-12" fill="none" viewBox="0 0 24 24" stroke="#002B6B" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
       </svg>
       <div className="text-center">
         <p className="font-['Manrope',sans-serif] font-bold text-[#1e242c] text-lg md:text-[20px]">{title}</p>
@@ -575,7 +589,7 @@ function TestimonialsSection() {
   };
 
   return (
-    <div className="bg-[#fafafa] flex flex-col gap-6 md:gap-10 items-center px-4 md:px-25 py-12 md:py-22 w-full">
+    <div id="how-it-works" className="bg-[#fafafa] flex flex-col gap-6 md:gap-10 items-center px-4 md:px-25 py-12 md:py-22 w-full">
       <h2 className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-3xl md:text-[56px] w-full leading-[1.2]">
         What our clients say
       </h2>
@@ -595,16 +609,16 @@ function TestimonialsSection() {
               onClick={handlePrev}
               className="bg-[#edeef0] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#d4d8dd] transition-all cursor-pointer"
             >
-              <svg className="size-5 md:size-6" fill="none" viewBox="0 0 16 15.556">
-                <path d={svgPaths.testimonials.p1426a480} fill="#002B6B" />
+              <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="#002B6B" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button 
               onClick={handleNext}
               className="bg-[#06f] flex items-center justify-center p-4 md:p-5 rounded-[100px] hover:scale-110 hover:bg-[#0052cc] transition-all cursor-pointer"
             >
-              <svg className="size-5 md:size-6" fill="none" viewBox="0 0 16 15.556">
-                <path d={svgPaths.testimonials.p12c5be00} fill="white" />
+              <svg className="size-5 md:size-6" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
@@ -667,7 +681,7 @@ function FaqSection() {
   ];
 
   return (
-    <div className="bg-white flex flex-col items-center px-4 md:px-25 py-12 md:py-22 w-full">
+    <div id="faq" className="bg-white flex flex-col items-center px-4 md:px-25 py-12 md:py-22 w-full">
       <div className="w-full max-w-full md:max-w-310">
         <h2 className="font-['General_Sans',sans-serif] font-medium text-[#1e242c] text-3xl md:text-[56px] leading-[1.2] mb-8 md:mb-25.5">
           Frequently asked Questions
