@@ -1,3 +1,5 @@
+//SIDEBAR (not final design)
+
 import * as React from "react";
 import {
   AudioWaveform,
