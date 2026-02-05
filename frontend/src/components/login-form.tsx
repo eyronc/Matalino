@@ -1,4 +1,4 @@
-//login form - not finished yet
+// Improved Login Form with smooth transitions and better styling
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -17,7 +17,7 @@ export function LoginForm({
   ...props
 }: {setPage: (value: boolean) => void} & React.ComponentProps<"div">) {
   return (
-    <div className={cn("min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] relative overflow-hidden", className)} {...props}>
+    <div className={cn("min-h-screen flex items-center justify-center p-0 bg-linear-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] relative overflow-hidden", className)} {...props}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-linear-to-br from-[#00d4ff]/20 to-[#7c3aed]/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
@@ -34,10 +34,10 @@ export function LoginForm({
         <div className="absolute top-60 left-60 w-1 h-1 bg-[#ffbe0b] rounded-full animate-bounce" style={{ animationDuration: '3.8s', animationDelay: '2s' }} />
       </div>
 
-      <Card className="w-full max-w-6xl border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-sm bg-black/40 relative z-10">
-        <CardContent className="grid p-0 md:grid-cols-5 min-h-screen md:min-h-175">
+      <Card className="w-full max-w-6xl border-0 shadow-none rounded-none overflow-hidden relative z-10 animate-in fade-in duration-700">
+        <CardContent className="grid p-0 md:grid-cols-5 min-h-150">
           {/* Left Sidebar - Decorative Panel */}
-          <div className="hidden md:flex flex-col bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-8 relative overflow-hidden col-span-2">
+          <div className="hidden md:flex flex-col bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-10 relative overflow-hidden col-span-2">
             {/* Animated Grid Background */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0" style={{
@@ -54,7 +54,7 @@ export function LoginForm({
               {/* Logo and Brand */}
               <div>
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
                     <svg className="w-6 h-6 text-[#0066ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -86,7 +86,7 @@ export function LoginForm({
                   </div>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group" style={{ animationDelay: '0.1s' }}>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group">
                   <div className="flex items-start gap-4">
                     <div className="bg-white/20 rounded-xl p-3 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-all">
                       <span className="text-2xl">📊</span>
@@ -98,7 +98,7 @@ export function LoginForm({
                   </div>
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group" style={{ animationDelay: '0.2s' }}>
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group">
                   <div className="flex items-start gap-4">
                     <div className="bg-white/20 rounded-xl p-3 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-all">
                       <span className="text-2xl">⚡</span>
@@ -113,7 +113,7 @@ export function LoginForm({
 
               {/* Social Proof */}
               <div className="mt-8">
-                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-3 px-5 flex hover:bg-white/15 transition-all">
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-3 px-5 hover:bg-white/15 transition-all">
                   <div className="flex -space-x-3">
                     <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#ff006e] to-[#ff6b9d] border-2 border-white shadow-lg" />
                     <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#00d4ff] to-[#00a8e8] border-2 border-white shadow-lg" />
@@ -138,7 +138,7 @@ export function LoginForm({
             <FieldGroup className="space-y-6 relative z-10 max-w-md mx-auto w-full">
               {/* Mobile Logo */}
               <div className="flex md:hidden items-center justify-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-linear-to-br from-[#0066ff] to-[#7c3aed] rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-linear-to-br from-[#0066ff] to-[#7c3aed] rounded-2xl flex items-center justify-center shadow-lg">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -162,13 +162,13 @@ export function LoginForm({
                   Email Address
                 </FieldLabel>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
                   <Input
                     id="email"
                     type="email"
                     placeholder="your.email@example.com"
                     required
-                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-xl transition-all text-base px-5 hover:border-gray-300"
+                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-2xl transition-all text-base px-5 hover:border-gray-300"
                   />
                 </div>
               </Field>
@@ -187,13 +187,13 @@ export function LoginForm({
                   </a>
                 </div>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
                   <Input 
                     id="password" 
                     type="password" 
                     placeholder="••••••••"
                     required 
-                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-xl transition-all text-base px-5 hover:border-gray-300"
+                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-2xl transition-all text-base px-5 hover:border-gray-300"
                   />
                 </div>
               </Field>
@@ -203,7 +203,7 @@ export function LoginForm({
                 <input 
                   type="checkbox" 
                   id="remember" 
-                  className="w-5 h-5 text-[#0066ff] border-2 border-gray-300 rounded focus:ring-[#0066ff] focus:ring-2 cursor-pointer"
+                  className="w-5 h-5 text-[#0066ff] border-2 border-gray-300 rounded-md focus:ring-[#0066ff] focus:ring-2 cursor-pointer transition-all"
                 />
                 <label htmlFor="remember" className="text-sm text-gray-700 cursor-pointer select-none">
                   Remember me for 30 days
@@ -213,7 +213,7 @@ export function LoginForm({
               {/* Sign In Button */}
               <Button 
                 type="submit" 
-                className="w-full h-14 bg-linear-to-r from-[#0066ff] to-[#7c3aed] hover:from-[#0052cc] hover:to-[#6929c4] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 active:scale-95 text-base mt-2"
+                className="w-full h-14 bg-linear-to-r from-[#0066ff] to-[#7c3aed] hover:from-[#0052cc] hover:to-[#6929c4] text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 text-base mt-2"
               >
                 <span>Sign In</span>
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -237,7 +237,7 @@ export function LoginForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
                     <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" fill="currentColor" />
@@ -248,7 +248,7 @@ export function LoginForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
                     <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" fill="currentColor" />
@@ -259,7 +259,7 @@ export function LoginForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
                     <path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z" fill="currentColor" />
@@ -270,12 +270,13 @@ export function LoginForm({
               {/* Sign Up Link */}
               <FieldDescription className="text-center text-gray-600 text-base pt-6">
                 New to Matalino?{" "}
-                <a 
+                <button 
+                  type="button"
                   onClick={() => setPage(false)} 
-                  className="text-[#0066ff] hover:text-[#0052cc] font-bold cursor-pointer transition-colors hover:underline"
+                  className="text-[#0066ff] hover:text-[#0052cc] font-bold transition-all hover:underline"
                 >
                   Create an account
-                </a>
+                </button>
               </FieldDescription>
 
               {/* Trust Badges */}
