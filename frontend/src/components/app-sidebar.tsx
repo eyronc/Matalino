@@ -1,5 +1,3 @@
-//SIDEBAR (not final design)
-
 import * as React from "react";
 import {
   AudioWaveform,
@@ -27,12 +25,12 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-// This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Aaron",
+    email: "aaron@matalino.app",
+    avatar: "/avatars/user.jpg",
+    role: "Pro Member",
   },
   teams: [
     {
@@ -92,19 +90,23 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props} className="border-r border-gray-200 bg-white">
+    <Sidebar
+      collapsible="icon"
+      {...props}
+      className="border-r border-gray-200 bg-white"
+    >
       <SidebarHeader className="border-b border-gray-100 px-4 py-4">
         <div className="cursor-pointer transition-all hover:scale-[1.02] duration-200">
           <TeamSwitcher teams={data.teams} />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-3 py-4">
-        {/* Main Navigation Section */}
+      <SidebarContent className="px-3 py-4 flex flex-col">
         <div className="space-y-6">
-          {/* Quick Access Section */}
           <div className="space-y-2">
             <div className="px-3 mb-3">
               <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -115,14 +117,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <NavProjects projects={data.projects} />
           </div>
 
-          {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center px-3">
               <div className="w-full border-t border-gray-200"></div>
             </div>
           </div>
 
-          {/* Account & Settings Section */}
           <div className="space-y-2">
             <div className="px-3 mb-3">
               <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -134,13 +134,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </div>
         </div>
 
-        {/* Premium Upgrade Card */}
         <div className="mt-auto pt-6 px-3">
           <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 p-4 text-white shadow-lg">
-            {/* Decorative elements */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
             <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-            
+
             <div className="relative">
               <div className="inline-flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl mb-3 backdrop-blur-sm">
                 <Sparkles className="w-5 h-5" />
@@ -157,11 +155,35 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-gray-100 px-3 py-3">
-        <div className="cursor-pointer transition-all hover:bg-gray-50 rounded-lg">
-          <NavUser user={data.user} />
+      <SidebarFooter className="p-3">
+        <div className="group relative overflow-hidden rounded-2xl bg-linear-to-br from-gray-50/80 via-indigo-50/40 to-purple-50/30 backdrop-blur-sm p-4 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
+          
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute inset-0 bg-linear-to-br from-indigo-100/60 via-purple-100/40 to-pink-100/30"></div>
+            <div className="absolute inset-0 bg-linear-to-tl from-transparent via-white/30 to-transparent"></div>
+          </div>
+
+          {/* Subtle Glow Effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="absolute top-0 left-1/4 w-32 h-32 bg-indigo-300/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-purple-300/20 rounded-full blur-2xl"></div>
+          </div>
+
+          {/* Clickable NavUser Area */}
+          <div className="relative z-10">
+            <NavUser
+              user={{
+                name: data.user.name,
+                email: data.user.email,
+                avatar: "",
+              }}
+            />
+          </div>
+
         </div>
       </SidebarFooter>
+
 
       <SidebarRail />
     </Sidebar>
