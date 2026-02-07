@@ -23,8 +23,8 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl my-auto border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <CardContent className="grid p-0 md:grid-cols-2">
+      <Card className="w-full max-w-5xl my-4 border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <CardContent className="grid p-0 md:grid-cols-2 min-h-[90vh] overflow-hidden">
           {/* Left Panel */}
           <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#7c3aed] to-[#0066ff] p-8 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20" />
@@ -90,8 +90,8 @@ export function SignupForm({
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-8 md:p-10 bg-white flex flex-col justify-center">
-            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700">
+          <form className="p-8 md:p-10 bg-white flex flex-col justify-center overflow-y-auto">
+            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700 py-4">
               <div className="flex md:hidden items-center justify-center gap-3 mb-6">
                 <div className="w-11 h-11 bg-linear-to-br from-[#7c3aed] to-[#0066ff] rounded-2xl flex items-center justify-center shadow-lg cursor-pointer">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -101,7 +101,7 @@ export function SignupForm({
                 <span className="text-2xl font-bold bg-linear-to-r from-[#7c3aed] to-[#0066ff] bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              <div className="mb-3">
+              <div className="mb-2">
                 <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontWeight: 700 }}>Create Account</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Fill in your details to get started</p>
               </div>
@@ -203,7 +203,7 @@ export function SignupForm({
                 Create Account
               </Button>
 
-              <div className="relative my-3">
+              <div className="relative my-2">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200" />
                 </div>
@@ -247,7 +247,7 @@ export function SignupForm({
                 </Button>
               </div>
 
-              <FieldDescription className="text-center text-gray-600 text-sm pt-2">
+              <FieldDescription className="text-center text-gray-600 text-sm pt-2 pb-2">
                 Already have an account?{" "}
                 <button 
                   type="button"
