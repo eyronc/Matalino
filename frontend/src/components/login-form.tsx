@@ -1,5 +1,3 @@
-//login-form (need to make it shorter and more concise, also add some animations and make it more visually appealing)
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -17,294 +15,203 @@ export function LoginForm({
   ...props
 }: {setPage: (value: boolean) => void} & React.ComponentProps<"div">) {
   return (
-    <div className={cn("min-h-screen flex items-center justify-center p-0 bg-linear-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] relative overflow-hidden", className)} {...props}>
-      {/* Animated Background Elements */}
+    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-slate-900 via-blue-900 to-violet-900 overflow-hidden", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
+      {/* Gradient Orbs Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-linear-to-br from-[#00d4ff]/20 to-[#7c3aed]/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-linear-to-br from-[#ff006e]/20 to-[#8338ec]/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-linear-to-br from-[#00f5d4]/10 to-[#00bbf9]/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '2s' }} />
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-violet-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-2 h-2 bg-[#00d4ff] rounded-full animate-bounce" style={{ animationDuration: '3s', animationDelay: '0s' }} />
-        <div className="absolute top-40 right-32 w-1 h-1 bg-[#ff006e] rounded-full animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }} />
-        <div className="absolute bottom-32 left-40 w-1.5 h-1.5 bg-[#8338ec] rounded-full animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }} />
-        <div className="absolute bottom-20 right-20 w-2 h-2 bg-[#00f5d4] rounded-full animate-bounce" style={{ animationDuration: '4.5s', animationDelay: '1.5s' }} />
-        <div className="absolute top-60 left-60 w-1 h-1 bg-[#ffbe0b] rounded-full animate-bounce" style={{ animationDuration: '3.8s', animationDelay: '2s' }} />
-      </div>
-
-      <Card className="w-full max-w-6xl border-0 shadow-none rounded-none overflow-hidden relative z-10 animate-in fade-in duration-700">
-        <CardContent className="grid p-0 md:grid-cols-5 min-h-150">
-          {/* Left Sidebar - Decorative Panel */}
-          <div className="hidden md:flex flex-col bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-10 relative overflow-hidden col-span-2">
-            {/* Animated Grid Background */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
-                backgroundSize: '40px 40px'
-              }} />
-            </div>
-
-            {/* Floating Gradient Orbs */}
-            <div className="absolute top-10 right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute bottom-20 left-10 w-32 h-32 bg-white/15 rounded-full blur-2xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
+      <Card className="w-full max-w-5xl max-h-[95vh] border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <CardContent className="grid p-0 md:grid-cols-2">
+          {/* Left Panel */}
+          <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-8 md:p-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20" />
             
-            <div className="relative z-10 flex flex-col justify-between h-full">
-              {/* Logo and Brand */}
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg transform hover:rotate-12 transition-transform duration-300">
-                    <svg className="w-6 h-6 text-[#0066ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <span className="text-white text-2xl font-bold tracking-tight">Matalino</span>
-                </div>
-
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                  Your AI-Powered
-                  <br />
-                  Study Companion
-                </h2>
-                <p className="text-blue-100 text-base mb-8">
-                  Join thousands of students who are mastering their exams with intelligent flashcards and adaptive learning.
-                </p>
-              </div>
-
-              {/* Feature Cards */}
-              <div className="space-y-4">
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white/20 rounded-xl p-3 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-all">
-                      <span className="text-2xl">🧠</span>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-base mb-1">AI-Powered Learning</h3>
-                      <p className="text-blue-100 text-sm">Smart algorithms adapt to your learning style and pace</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white/20 rounded-xl p-3 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-all">
-                      <span className="text-2xl">📊</span>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-base mb-1">Progress Tracking</h3>
-                      <p className="text-blue-100 text-sm">Real-time analytics to monitor your improvement</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-xl cursor-pointer group">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white/20 rounded-xl p-3 flex items-center justify-center shrink-0 group-hover:bg-white/30 transition-all">
-                      <span className="text-2xl">⚡</span>
-                    </div>
-                    <div>
-                      <h3 className="text-white font-bold text-base mb-1">Lightning Fast</h3>
-                      <p className="text-blue-100 text-sm">Generate flashcards instantly from any material</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Proof */}
-              <div className="mt-8">
-                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-3 px-5 hover:bg-white/15 transition-all">
-                  <div className="flex -space-x-3">
-                    <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#ff006e] to-[#ff6b9d] border-2 border-white shadow-lg" />
-                    <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#00d4ff] to-[#00a8e8] border-2 border-white shadow-lg" />
-                    <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#8338ec] to-[#a663cc] border-2 border-white shadow-lg" />
-                    <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#00f5d4] to-[#00d9c0] border-2 border-white shadow-lg" />
-                  </div>
-                  <div className="text-white">
-                    <p className="text-sm font-bold">12,000+ Students</p>
-                    <p className="text-xs text-blue-100">Studying smarter every day</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - Login Form */}
-          <form className="p-8 md:p-12 bg-white flex flex-col justify-center col-span-3 relative">
-            {/* Decorative Corner Elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-linear-to-br from-[#0066ff]/5 to-transparent rounded-bl-full" />
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-linear-to-tr from-[#7c3aed]/5 to-transparent rounded-tr-full" />
-
-            <FieldGroup className="space-y-6 relative z-10 max-w-md mx-auto w-full">
-              {/* Mobile Logo */}
-              <div className="flex md:hidden items-center justify-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-linear-to-br from-[#0066ff] to-[#7c3aed] rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-10 animate-in slide-in-from-left duration-500">
+                <div className="w-11 h-11 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-2xl font-bold bg-linear-to-r from-[#0066ff] to-[#7c3aed] bg-clip-text text-transparent">Matalino</span>
+                <span className="text-white text-2xl font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              {/* Header */}
-              <div className="text-center mb-8">
-                <h1 className="text-4xl font-bold mb-3 bg-linear-to-r from-[#0066ff] to-[#7c3aed] bg-clip-text text-transparent">
-                  Welcome Back!
-                </h1>
-                <p className="text-gray-600 text-base">
-                  Continue your learning journey
-                </p>
+              <h2 className="text-4xl font-bold text-white mb-4 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
+                Welcome Back
+              </h2>
+              <p className="text-blue-100 text-base animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
+                Sign in to continue your learning journey
+              </p>
+            </div>
+
+            <div className="space-y-3 relative z-10">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all duration-300 hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
+                  <span className="text-xl">🎯</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>Track Progress</p>
+                  <p className="text-blue-100 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Real-time analytics</p>
+                </div>
               </div>
 
-              {/* Email Field */}
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all duration-300 hover:scale-105 animate-in slide-in-from-left duration-700 delay-400 cursor-pointer">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
+                  <span className="text-xl">✨</span>
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>AI Learning</p>
+                  <p className="text-blue-100 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Smart flashcards</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-500">
+              <div className="flex -space-x-2">
+                <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-200 to-blue-400 border-2 border-white" />
+                <div className="w-7 h-7 rounded-full bg-linear-to-br from-purple-200 to-purple-400 border-2 border-white" />
+                <div className="w-7 h-7 rounded-full bg-linear-to-br from-pink-200 to-pink-400 border-2 border-white" />
+              </div>
+              <p className="text-xs text-white font-medium" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>12,000+ students</p>
+            </div>
+          </div>
+
+          {/* Right Panel - Form */}
+          <form className="p-8 md:p-10 bg-white flex flex-col justify-center">
+            <FieldGroup className="space-y-4 animate-in slide-in-from-right duration-700">
+              <div className="flex md:hidden items-center justify-center gap-3 mb-6">
+                <div className="w-11 h-11 bg-linear-to-br from-[#0066ff] to-[#7c3aed] rounded-2xl flex items-center justify-center shadow-lg cursor-pointer">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold bg-linear-to-r from-[#0066ff] to-[#7c3aed] bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
+              </div>
+
+              <div className="mb-4">
+                <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontWeight: 700 }}>Sign In</h1>
+                <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Enter your credentials</p>
+              </div>
+
               <Field>
-                <FieldLabel htmlFor="email" className="text-gray-700 font-semibold text-sm mb-2 block">
-                  Email Address
+                <FieldLabel htmlFor="email" className="text-gray-700 font-medium text-sm mb-2 block cursor-pointer" style={{ fontWeight: 600 }}>
+                  Email
                 </FieldLabel>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
                   <Input
                     id="email"
                     type="email"
-                    placeholder="your.email@example.com"
+                    placeholder="you@example.com"
                     required
-                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-2xl transition-all text-base px-5 hover:border-gray-300"
+                    className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
-              {/* Password Field */}
               <Field>
                 <div className="flex items-center justify-between mb-2">
-                  <FieldLabel htmlFor="password" className="text-gray-700 font-semibold text-sm">
+                  <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm cursor-pointer" style={{ fontWeight: 600 }}>
                     Password
                   </FieldLabel>
-                  <a
-                    href="#"
-                    className="text-sm text-[#0066ff] hover:text-[#0052cc] font-semibold transition-colors hover:underline"
-                  >
-                    Forgot Password?
+                  <a href="#" className="text-sm text-[#0066ff] hover:text-[#0052cc] font-medium transition-colors cursor-pointer hover:underline" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
+                    Forgot?
                   </a>
                 </div>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-r from-[#0066ff] to-[#7c3aed] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
                   <Input 
                     id="password" 
                     type="password" 
                     placeholder="••••••••"
                     required 
-                    className="relative h-14 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-4 focus:ring-[#0066ff]/10 rounded-2xl transition-all text-base px-5 hover:border-gray-300"
+                    className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#0066ff] focus:ring-2 focus:ring-[#0066ff]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
-              {/* Remember Me Checkbox */}
               <div className="flex items-center gap-2">
                 <input 
                   type="checkbox" 
                   id="remember" 
-                  className="w-5 h-5 text-[#0066ff] border-2 border-gray-300 rounded-md focus:ring-[#0066ff] focus:ring-2 cursor-pointer transition-all"
+                  className="w-4 h-4 text-[#0066ff] border-gray-300 rounded focus:ring-[#0066ff] cursor-pointer"
                 />
-                <label htmlFor="remember" className="text-sm text-gray-700 cursor-pointer select-none">
-                  Remember me for 30 days
+                <label htmlFor="remember" className="text-sm text-gray-700 cursor-pointer" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Remember me
                 </label>
               </div>
 
-              {/* Sign In Button */}
               <Button 
                 type="submit" 
-                className="w-full h-14 bg-linear-to-r from-[#0066ff] to-[#7c3aed] hover:from-[#0052cc] hover:to-[#6929c4] text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 text-base mt-2"
+                className="w-full h-12 bg-linear-to-r from-[#0066ff] to-[#7c3aed] hover:from-[#0052cc] hover:to-[#6929c4] text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
               >
-                <span>Sign In</span>
-                <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M13 7l5 5m0 0l-5 5m5-5H6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                Sign In
               </Button>
 
-              {/* Divider */}
-              <div className="relative flex items-center justify-center my-8">
+              <div className="relative my-4">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t-2 border-gray-200" />
+                  <div className="w-full border-t border-gray-200" />
                 </div>
-                <div className="relative bg-white px-6">
-                  <span className="text-xs text-gray-500 font-semibold uppercase tracking-widest">Or continue with</span>
+                <div className="relative flex justify-center">
+                  <span className="bg-white px-4 text-xs text-gray-500" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>Or continue with</span>
                 </div>
               </div>
 
-              {/* Social Login Buttons */}
-              <div className="grid grid-cols-3 gap-4">
-                {/* Google */}
+              <div className="grid grid-cols-3 gap-3">
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-12 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
-                    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" fill="currentColor" />
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                   </svg>
                 </Button>
 
-                {/* Apple */}
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-12 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
-                    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" fill="currentColor" />
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
                   </svg>
                 </Button>
 
-                {/* Meta */}
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-14 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-2xl transition-all group transform hover:scale-105 active:scale-95"
+                  className="h-12 border-2 border-gray-200 hover:border-[#0066ff] hover:bg-blue-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 group-hover:scale-110 transition-transform">
-                    <path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z" fill="currentColor" />
+                  <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </Button>
               </div>
 
-              {/* Sign Up Link */}
-              <FieldDescription className="text-center text-gray-600 text-base pt-6">
-                New to Matalino?{" "}
+              <FieldDescription className="text-center text-gray-600 text-sm pt-4">
+                Don't have an account?{" "}
                 <button 
                   type="button"
                   onClick={() => setPage(false)} 
-                  className="text-[#0066ff] hover:text-[#0052cc] font-bold transition-all hover:underline"
+                  className="text-[#0066ff] hover:text-[#0052cc] font-medium transition-colors cursor-pointer hover:underline"
                 >
-                  Create an account
+                  Sign up
                 </button>
               </FieldDescription>
-
-              {/* Trust Badges */}
-              <div className="flex items-center justify-center gap-6 pt-6 border-t border-gray-200 mt-6">
-                <div className="flex items-center gap-2 text-gray-500">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs font-medium">Secure Login</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-500">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-xs font-medium">256-bit Encryption</span>
-                </div>
-              </div>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
-
-      {/* Bottom Footer */}
-      <div className="absolute bottom-6 left-0 right-0 text-center z-20">
-        <p className="text-gray-400 text-xs">
-          © 2024 Matalino • <a href="#" className="hover:text-white transition-colors">Privacy Policy</a> • <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-        </p>
-      </div>
     </div>
   )
 }

@@ -15,6 +15,22 @@
   --color-body: var(--color-gray-400);
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.auth-page {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body:has(.auth-page) {
+  overflow: hidden;
+}
 
 @variant dark (&:is(.dark *));
 
