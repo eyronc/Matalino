@@ -15,7 +15,7 @@ export function LoginForm({
   ...props
 }: {setPage: (value: boolean) => void} & React.ComponentProps<"div">) {
   return (
-    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-slate-900 via-blue-900 to-violet-900 overflow-hidden", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-slate-900 via-blue-900 to-violet-900", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Gradient Orbs Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
@@ -23,11 +23,11 @@ export function LoginForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl min-h-150 max-h-[95vh] border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <CardContent className="grid p-0 md:grid-cols-2 h-full min-h-150">
+      <Card className="w-full max-w-5xl h-[85vh] md:h-[90vh] border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent' }}>
+        <CardContent className="grid p-0 md:grid-cols-2 h-full">
           {/* Left Panel */}
-          <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-8 md:p-10 relative overflow-y-auto">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20" />
+          <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#0066ff] to-[#7c3aed] p-10 relative overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20 pointer-events-none" />
             
             <div className="relative z-10 shrink-0">
               <div className="flex items-center gap-3 mb-8 animate-in slide-in-from-left duration-500">
@@ -39,15 +39,15 @@ export function LoginForm({
                 <span className="text-white text-2xl font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
+              <h2 className="text-4xl font-bold text-white mb-3 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
                 Welcome Back
               </h2>
-              <p className="text-blue-100 text-sm md:text-base animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-blue-100 text-base animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
                 Sign in to continue your learning journey
               </p>
             </div>
 
-            <div className="space-y-3 relative z-10 shrink-0 my-4">
+            <div className="space-y-3 relative z-10 shrink-0 my-6">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
                   <span className="text-xl">🎯</span>
@@ -69,7 +69,7 @@ export function LoginForm({
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-500 shrink-0 mt-4">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-500 shrink-0">
               <div className="flex -space-x-2">
                 <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-200 to-blue-400 border-2 border-white" />
                 <div className="w-7 h-7 rounded-full bg-linear-to-br from-purple-200 to-purple-400 border-2 border-white" />
@@ -80,8 +80,8 @@ export function LoginForm({
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-6 md:p-8 bg-white flex flex-col justify-center overflow-y-auto">
-            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700">
+          <form className="p-6 md:p-8 lg:p-10 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
+            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
               <div className="flex md:hidden items-center justify-center gap-3 mb-6">
                 <div className="w-11 h-11 bg-linear-to-br from-[#0066ff] to-[#7c3aed] rounded-2xl flex items-center justify-center shadow-lg cursor-pointer">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -91,7 +91,7 @@ export function LoginForm({
                 <span className="text-2xl font-bold bg-linear-to-r from-[#0066ff] to-[#7c3aed] bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              <div className="mb-3">
+              <div className="mb-4">
                 <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontWeight: 700 }}>Sign In</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Enter your credentials</p>
               </div>
@@ -198,7 +198,7 @@ export function LoginForm({
                 </Button>
               </div>
 
-              <FieldDescription className="text-center text-gray-600 text-sm pt-2 pb-2">
+              <FieldDescription className="text-center text-gray-600 text-sm pt-2">
                 Don't have an account?{" "}
                 <button 
                   type="button"
