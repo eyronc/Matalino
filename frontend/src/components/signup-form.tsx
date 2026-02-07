@@ -23,13 +23,13 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl min-h-[600px] max-h-[95vh] border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <CardContent className="grid p-0 md:grid-cols-2 h-full min-h-[600px]">
+      <Card className="w-full max-w-5xl min-h-150 max-h-[95vh] border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <CardContent className="grid p-0 md:grid-cols-2 h-full min-h-150">
           {/* Left Panel */}
           <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#7c3aed] to-[#0066ff] p-8 md:p-10 relative overflow-y-auto">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20" />
             
-            <div className="relative z-10 flex-shrink-0">
+            <div className="relative z-10 shrink-0">
               <div className="flex items-center gap-3 mb-8 animate-in slide-in-from-left duration-500">
                 <div className="w-11 h-11 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -47,7 +47,7 @@ export function SignupForm({
               </p>
             </div>
 
-            <div className="space-y-3 relative z-10 flex-shrink-0 my-4">
+            <div className="space-y-3 relative z-10 shrink-0 my-4">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
                 <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
                   <span className="text-xl">🚀</span>
@@ -79,7 +79,7 @@ export function SignupForm({
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 flex-shrink-0 mt-4">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 shrink-0 mt-4">
               <div className="flex -space-x-2">
                 <div className="w-7 h-7 rounded-full bg-linear-to-br from-purple-200 to-purple-400 border-2 border-white" />
                 <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-200 to-blue-400 border-2 border-white" />
@@ -90,8 +90,8 @@ export function SignupForm({
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-8 md:p-10 bg-white flex flex-col justify-center overflow-y-auto">
-            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700 py-4">
+          <form className="p-6 md:p-8 bg-white flex flex-col justify-center overflow-y-auto">
+            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700">
               <div className="flex md:hidden items-center justify-center gap-3 mb-6">
                 <div className="w-11 h-11 bg-linear-to-br from-[#7c3aed] to-[#0066ff] rounded-2xl flex items-center justify-center shadow-lg cursor-pointer">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
