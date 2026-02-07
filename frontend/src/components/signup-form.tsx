@@ -15,16 +15,16 @@ export function SignupForm({
   ...props
 }: { setPage: (value: boolean) => void } & React.ComponentProps<"div">) {
   return (
-    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-purple-900 via-violet-900 to-blue-900 overflow-auto", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-purple-900 via-violet-900 to-blue-900 overflow-hidden", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Gradient Orbs Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-pink-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1.5s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl my-4 border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <CardContent className="grid p-0 md:grid-cols-2 min-h-[90vh] overflow-hidden">
+      <Card className="w-full max-w-5xl h-[90vh] border-0 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-xl bg-white/95 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <CardContent className="grid p-0 md:grid-cols-2 h-full">
           {/* Left Panel */}
           <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#7c3aed] to-[#0066ff] p-8 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20" />
