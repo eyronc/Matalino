@@ -23,34 +23,34 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', maxHeight: '90vh' }}>
+      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', height: 'auto', maxHeight: '85vh' }}>
         <CardContent className="grid p-0 md:grid-cols-2 h-full">
           {/* Left Panel */}
-          <div className="hidden md:flex flex-col justify-between p-10 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
+          <div className="hidden md:flex flex-col justify-between p-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20 pointer-events-none" />
             
             <div className="relative z-10 shrink-0">
-              <div className="flex items-center gap-3 mb-8 animate-in slide-in-from-left duration-500">
-                <div className="w-11 h-11 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <div className="flex items-center gap-3 mb-6 animate-in slide-in-from-left duration-500">
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-white text-2xl font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
+                <span className="text-white text-xl font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              <h2 className="text-4xl font-bold text-white mb-3 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
+              <h2 className="text-3xl font-bold text-white mb-2 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
                 Start Learning
               </h2>
-              <p className="text-purple-100 text-base animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-purple-100 text-sm animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
                 Join thousands of students achieving their goals
               </p>
             </div>
 
-            <div className="space-y-3 relative z-10 shrink-0 my-6">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
-                  <span className="text-xl">🚀</span>
+            <div className="space-y-2.5 relative z-10 shrink-0 my-4">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
+                <div className="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-lg">🚀</span>
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>Quick Setup</p>
@@ -58,9 +58,9 @@ export function SignupForm({
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-400 cursor-pointer">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
-                  <span className="text-xl">📚</span>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-400 cursor-pointer">
+                <div className="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-lg">📚</span>
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>Free Forever</p>
@@ -68,9 +68,9 @@ export function SignupForm({
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-500 cursor-pointer">
-                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shrink-0">
-                  <span className="text-xl">🎯</span>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-500 cursor-pointer">
+                <div className="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-lg">🎯</span>
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>AI Powered</p>
@@ -79,35 +79,35 @@ export function SignupForm({
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 shrink-0">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-1.5 px-3 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 shrink-0">
               <div className="flex -space-x-2">
-                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #e9d5ff, #c084fc)' }} />
-                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #bfdbfe, #60a5fa)' }} />
-                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #fbcfe8, #f9a8d4)' }} />
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #e9d5ff, #c084fc)' }} />
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #bfdbfe, #60a5fa)' }} />
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #fbcfe8, #f9a8d4)' }} />
               </div>
               <p className="text-xs text-white font-medium" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>12,000+ students</p>
             </div>
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-6 md:p-8 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
-            <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
-              <div className="flex md:hidden items-center justify-center gap-3 mb-6">
-                <div className="w-11 h-11 rounded-2xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+          <form className="p-5 md:p-6 lg:p-7 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
+            <FieldGroup className="space-y-2 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
+              <div className="flex md:hidden items-center justify-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-2xl font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
+                <span className="text-xl font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
               </div>
 
-              <div className="mb-3">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontWeight: 700 }}>Create Account</h1>
+              <div className="mb-2">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1" style={{ fontWeight: 700 }}>Create Account</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Fill in your details to get started</p>
               </div>
 
               <Field>
-                <FieldLabel htmlFor="name" className="text-gray-700 font-medium text-sm mb-2 block cursor-pointer" style={{ fontWeight: 600 }}>
+                <FieldLabel htmlFor="name" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
                   Full Name
                 </FieldLabel>
                 <div className="relative group">
@@ -117,14 +117,14 @@ export function SignupForm({
                     type="text"
                     placeholder="John Doe"
                     required
-                    className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                    className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="email" className="text-gray-700 font-medium text-sm mb-2 block cursor-pointer" style={{ fontWeight: 600 }}>
+                <FieldLabel htmlFor="email" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
                   Email
                 </FieldLabel>
                 <div className="relative group">
@@ -134,15 +134,15 @@ export function SignupForm({
                     type="email"
                     placeholder="you@example.com"
                     required
-                    className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                    className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <Field>
-                  <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm mb-2 block cursor-pointer" style={{ fontWeight: 600 }}>
+                  <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
                     Password
                   </FieldLabel>
                   <div className="relative group">
@@ -152,14 +152,14 @@ export function SignupForm({
                       type="password"
                       placeholder="••••••••"
                       required
-                      className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                      className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     />
                   </div>
                 </Field>
 
                 <Field>
-                  <FieldLabel htmlFor="confirm-password" className="text-gray-700 font-medium text-sm mb-2 block cursor-pointer" style={{ fontWeight: 600 }}>
+                  <FieldLabel htmlFor="confirm-password" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
                     Confirm
                   </FieldLabel>
                   <div className="relative group">
@@ -169,14 +169,14 @@ export function SignupForm({
                       type="password"
                       placeholder="••••••••"
                       required
-                      className="relative h-12 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
+                      className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     />
                   </div>
                 </Field>
               </div>
 
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2 py-1">
                 <input 
                   type="checkbox" 
                   id="terms" 
@@ -197,7 +197,7 @@ export function SignupForm({
 
               <Button 
                 type="submit" 
-                className="w-full h-12 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer"
+                className="w-full h-11 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer"
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, background: 'linear-gradient(to right, #7c3aed, #0066ff)' }}
               >
                 Create Account
@@ -212,11 +212,11 @@ export function SignupForm({
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-12 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -229,7 +229,7 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-12 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
@@ -239,7 +239,7 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-12 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
