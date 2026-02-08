@@ -15,7 +15,7 @@ export function SignupForm({
   ...props
 }: { setPage: (value: boolean) => void } & React.ComponentProps<"div">) {
   return (
-    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6 bg-linear-to-br from-purple-900 via-violet-900 to-blue-900", className)} {...props} style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4 md:p-6", className)} {...props} style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to bottom right, #581c87, #5b21b6, #1e3a8a)' }}>
       {/* Gradient Orbs Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
@@ -23,10 +23,10 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl h-[85vh] md:h-[90vh] border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent' }}>
+      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', maxHeight: '90vh' }}>
         <CardContent className="grid p-0 md:grid-cols-2 h-full">
           {/* Left Panel */}
-          <div className="hidden md:flex flex-col justify-between bg-linear-to-br from-[#7c3aed] to-[#0066ff] p-10 relative overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+          <div className="hidden md:flex flex-col justify-between p-10 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20 pointer-events-none" />
             
             <div className="relative z-10 shrink-0">
@@ -81,27 +81,27 @@ export function SignupForm({
 
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 shrink-0">
               <div className="flex -space-x-2">
-                <div className="w-7 h-7 rounded-full bg-linear-to-br from-purple-200 to-purple-400 border-2 border-white" />
-                <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-200 to-blue-400 border-2 border-white" />
-                <div className="w-7 h-7 rounded-full bg-linear-to-br from-pink-200 to-pink-400 border-2 border-white" />
+                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #e9d5ff, #c084fc)' }} />
+                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #bfdbfe, #60a5fa)' }} />
+                <div className="w-7 h-7 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #fbcfe8, #f9a8d4)' }} />
               </div>
               <p className="text-xs text-white font-medium" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>12,000+ students</p>
             </div>
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-6 md:p-8 lg:p-10 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
-            <FieldGroup className="space-y-3 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
+          <form className="p-6 md:p-8 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
+            <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
               <div className="flex md:hidden items-center justify-center gap-3 mb-6">
-                <div className="w-11 h-11 bg-linear-to-br from-[#7c3aed] to-[#0066ff] rounded-2xl flex items-center justify-center shadow-lg cursor-pointer">
+                <div className="w-11 h-11 rounded-2xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-2xl font-bold bg-linear-to-r from-[#7c3aed] to-[#0066ff] bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
+                <span className="text-2xl font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-3">
                 <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontWeight: 700 }}>Create Account</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Fill in your details to get started</p>
               </div>
@@ -111,7 +111,7 @@ export function SignupForm({
                   Full Name
                 </FieldLabel>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#7c3aed] to-[#0066ff] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" style={{ background: 'linear-gradient(to right, #7c3aed, #0066ff)' }} />
                   <Input
                     id="name"
                     type="text"
@@ -128,7 +128,7 @@ export function SignupForm({
                   Email
                 </FieldLabel>
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-linear-to-r from-[#7c3aed] to-[#0066ff] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" style={{ background: 'linear-gradient(to right, #7c3aed, #0066ff)' }} />
                   <Input
                     id="email"
                     type="email"
@@ -146,7 +146,7 @@ export function SignupForm({
                     Password
                   </FieldLabel>
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-linear-to-r from-[#7c3aed] to-[#0066ff] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" style={{ background: 'linear-gradient(to right, #7c3aed, #0066ff)' }} />
                     <Input
                       id="password"
                       type="password"
@@ -163,7 +163,7 @@ export function SignupForm({
                     Confirm
                   </FieldLabel>
                   <div className="relative group">
-                    <div className="absolute inset-0 bg-linear-to-r from-[#7c3aed] to-[#0066ff] rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" style={{ background: 'linear-gradient(to right, #7c3aed, #0066ff)' }} />
                     <Input
                       id="confirm-password"
                       type="password"
@@ -197,8 +197,8 @@ export function SignupForm({
 
               <Button 
                 type="submit" 
-                className="w-full h-12 bg-linear-to-r from-[#7c3aed] to-[#0066ff] hover:from-[#6929c4] hover:to-[#0052cc] text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+                className="w-full h-12 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, background: 'linear-gradient(to right, #7c3aed, #0066ff)' }}
               >
                 Create Account
               </Button>
@@ -247,7 +247,7 @@ export function SignupForm({
                 </Button>
               </div>
 
-              <FieldDescription className="text-center text-gray-600 text-sm pt-2">
+              <FieldDescription className="text-center text-gray-600 text-sm pt-1">
                 Already have an account?{" "}
                 <button 
                   type="button"
