@@ -23,7 +23,7 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', height: 'auto', maxHeight: '85vh' }}>
+      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', height: 'auto', maxHeight: '90vh' }}>
         <CardContent className="grid p-0 md:grid-cols-2 h-full">
           {/* Left Panel */}
           <div className="hidden md:flex flex-col justify-between p-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
@@ -90,8 +90,28 @@ export function SignupForm({
           </div>
 
           {/* Right Panel - Form */}
-          <form className="p-5 md:p-6 lg:p-7 bg-white flex flex-col justify-center overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400">
-            <FieldGroup className="space-y-2 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
+          <form className="p-5 md:p-6 lg:p-7 bg-white flex flex-col overflow-y-auto" style={{
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#7c3aed #e5e7eb'
+          }}>
+            <style>{`
+              form::-webkit-scrollbar {
+                width: 8px;
+              }
+              form::-webkit-scrollbar-track {
+                background: #f3f4f6;
+                border-radius: 10px;
+              }
+              form::-webkit-scrollbar-thumb {
+                background: linear-gradient(to bottom, #7c3aed, #0066ff);
+                border-radius: 10px;
+              }
+              form::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(to bottom, #6929c4, #0052cc);
+              }
+            `}</style>
+            
+            <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full my-auto">
               <div className="flex md:hidden items-center justify-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
                   <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -101,8 +121,8 @@ export function SignupForm({
                 <span className="text-xl font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
               </div>
 
-              <div className="mb-2">
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1" style={{ fontWeight: 700 }}>Create Account</h1>
+              <div className="mb-3">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1.5" style={{ fontWeight: 700 }}>Create Account</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Fill in your details to get started</p>
               </div>
 
@@ -140,7 +160,7 @@ export function SignupForm({
                 </div>
               </Field>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2.5">
                 <Field>
                   <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
                     Password
@@ -203,7 +223,7 @@ export function SignupForm({
                 Create Account
               </Button>
 
-              <div className="relative my-2">
+              <div className="relative my-3">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200" />
                 </div>
@@ -212,11 +232,11 @@ export function SignupForm({
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2.5">
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -229,7 +249,7 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
@@ -239,7 +259,7 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -247,7 +267,7 @@ export function SignupForm({
                 </Button>
               </div>
 
-              <FieldDescription className="text-center text-gray-600 text-sm pt-1">
+              <FieldDescription className="text-center text-gray-600 text-sm pt-2">
                 Already have an account?{" "}
                 <button 
                   type="button"
