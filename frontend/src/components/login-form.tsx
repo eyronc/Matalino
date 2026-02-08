@@ -84,7 +84,7 @@ export function LoginForm({
             scrollbarWidth: 'thin',
             scrollbarColor: '#0066ff #e5e7eb'
           }}>
-            <style>{`
+            <style dangerouslySetInnerHTML={{__html: `
               form::-webkit-scrollbar {
                 width: 8px;
               }
@@ -99,7 +99,7 @@ export function LoginForm({
               form::-webkit-scrollbar-thumb:hover {
                 background: linear-gradient(to bottom, #0052cc, #6929c4);
               }
-            `}</style>
+            `}} />
             
             <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full my-auto">
               <div className="flex md:hidden items-center justify-center gap-3 mb-4">

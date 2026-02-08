@@ -94,7 +94,7 @@ export function SignupForm({
             scrollbarWidth: 'thin',
             scrollbarColor: '#7c3aed #e5e7eb'
           }}>
-            <style>{`
+            <style dangerouslySetInnerHTML={{__html: `
               form::-webkit-scrollbar {
                 width: 8px;
               }
@@ -109,7 +109,7 @@ export function SignupForm({
               form::-webkit-scrollbar-thumb:hover {
                 background: linear-gradient(to bottom, #6929c4, #0052cc);
               }
-            `}</style>
+            `}} />
             
             <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full my-auto">
               <div className="flex md:hidden items-center justify-center gap-3 mb-4">
