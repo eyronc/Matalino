@@ -1,21 +1,67 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import React from 'react';
 
-export function SignupForm({
-  setPage,
-  className,
-  ...props
-}: { setPage: (value: boolean) => void } & React.ComponentProps<"div">) {
+// Utility function for className merging
+const cn = (...classes: (string | undefined | null | false)[]): string => classes.filter(Boolean).join(' ');
+
+// UI Components
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+const Card: React.FC<CardProps> = ({ className, ...props }) => (
+  <div className={cn("rounded-lg border bg-white text-gray-950 shadow-sm", className)} {...props} />
+);
+
+const CardContent: React.FC<CardProps> = ({ className, ...props }) => (
+  <div className={cn("p-6", className)} {...props} />
+);
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
+
+const Input: React.FC<InputProps> = ({ className, ...props }) => (
+  <input className={cn("flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm", className)} {...props} />
+);
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+  variant?: "default" | "outline";
+}
+
+const Button: React.FC<ButtonProps> = ({ className, variant = "default", ...props }) => {
+  const variants: Record<string, string> = {
+    default: "bg-gray-900 text-white hover:bg-gray-800",
+    outline: "border border-gray-200 bg-white hover:bg-gray-50"
+  };
   return (
-    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-3 md:p-4", className)} {...props} style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to bottom right, #581c87, #5b21b6, #1e3a8a)' }}>
+    <button className={cn("inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:opacity-50", variants[variant], className)} {...props} />
+  );
+};
+
+const Field: React.FC<{ children: React.ReactNode }> = ({ children }) => <div className="space-y-2">{children}</div>;
+
+interface FieldGroupProps {
+  className?: string;
+  children: React.ReactNode;
+}
+
+const FieldGroup: React.FC<FieldGroupProps> = ({ className, children }) => <div className={className}>{children}</div>;
+
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  className?: string;
+}
+
+const FieldLabel: React.FC<LabelProps> = ({ className, ...props }) => <label className={cn("text-sm font-medium leading-none", className)} {...props} />;
+
+interface SignupFormProps extends React.HTMLAttributes<HTMLDivElement> {
+  setPage: (value: boolean) => void;
+  className?: string;
+}
+
+export function SignupForm({ setPage, className, ...props }: SignupFormProps) {
+  return (
+    <div className={cn("fixed inset-0 w-full h-full flex items-center justify-center p-4", className)} {...props} style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to bottom right, #581c87, #5b21b6, #1e3a8a)' }}>
       <style dangerouslySetInnerHTML={{__html: `
         .signup-scroll-form::-webkit-scrollbar {
           width: 8px;
@@ -40,94 +86,94 @@ export function SignupForm({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '7s', animationDelay: '3s' }} />
       </div>
 
-      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent', maxHeight: '92vh' }}>
-        <CardContent className="grid p-0 md:grid-cols-2 h-full max-h-[92vh]">
-          {/* Left Panel */}
-          <div className="hidden md:flex flex-col justify-between p-6 lg:p-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
+      <Card className="w-full max-w-5xl border-0 shadow-2xl rounded-3xl overflow-hidden relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ backgroundColor: 'transparent' }}>
+        <CardContent className="grid p-0 md:grid-cols-2">
+          {/* Left Panel - Fixed, No Scroll */}
+          <div className="hidden md:flex flex-col justify-between p-8 lg:p-10 relative overflow-hidden rounded-l-3xl" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-20 pointer-events-none" />
             
-            <div className="relative z-10 shrink-0">
-              <div className="flex items-center gap-2.5 mb-5 animate-in slide-in-from-left duration-500">
-                <div className="w-9 h-9 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6 animate-in slide-in-from-left duration-500">
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform duration-300 cursor-pointer">
                   <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-white text-lg font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
+                <span className="text-white text-xl font-bold tracking-tight" style={{ fontFamily: "'Inter', sans-serif" }}>Matalino</span>
               </div>
 
-              <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight animate-in slide-in-from-left duration-700 delay-100" style={{ fontWeight: 700 }}>
                 Start Learning
               </h2>
-              <p className="text-purple-100 text-sm animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <p className="text-purple-100 text-base animate-in slide-in-from-left duration-700 delay-200" style={{ fontFamily: "'Inter', sans-serif" }}>
                 Join thousands of students achieving their goals
               </p>
             </div>
 
-            <div className="space-y-2 relative z-10 shrink-0 my-3">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2.5 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
-                  <span className="text-base">🚀</span>
+            <div className="space-y-3 relative z-10">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-300 cursor-pointer">
+                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-xl">🚀</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-xs" style={{ fontWeight: 600 }}>Quick Setup</p>
-                  <p className="text-purple-100 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Ready in 2 minutes</p>
+                  <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>Quick Setup</p>
+                  <p className="text-purple-100 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Ready in 2 minutes</p>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2.5 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-400 cursor-pointer">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
-                  <span className="text-base">📚</span>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-400 cursor-pointer">
+                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-xl">📚</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-xs" style={{ fontWeight: 600 }}>Free Forever</p>
-                  <p className="text-purple-100 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>No credit card needed</p>
+                  <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>Free Forever</p>
+                  <p className="text-purple-100 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>No credit card needed</p>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-2.5 flex items-center gap-2.5 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-500 cursor-pointer">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
-                  <span className="text-base">🎯</span>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 flex items-center gap-3 hover:bg-white/15 transition-all hover:scale-105 animate-in slide-in-from-left duration-700 delay-500 cursor-pointer">
+                <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+                  <span className="text-xl">🎯</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-xs" style={{ fontWeight: 600 }}>AI Powered</p>
-                  <p className="text-purple-100 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>Smart learning</p>
+                  <p className="text-white font-semibold text-sm" style={{ fontWeight: 600 }}>AI Powered</p>
+                  <p className="text-purple-100 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Smart learning</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-1.5 px-3 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600 shrink-0">
-              <div className="flex -space-x-1.5">
-                <div className="w-5 h-5 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #e9d5ff, #c084fc)' }} />
-                <div className="w-5 h-5 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #bfdbfe, #60a5fa)' }} />
-                <div className="w-5 h-5 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #fbcfe8, #f9a8d4)' }} />
+            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full py-2 px-4 relative z-10 hover:bg-white/15 transition-all animate-in slide-in-from-left duration-700 delay-600">
+              <div className="flex -space-x-2">
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #e9d5ff, #c084fc)' }} />
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #bfdbfe, #60a5fa)' }} />
+                <div className="w-6 h-6 rounded-full border-2 border-white" style={{ background: 'linear-gradient(to bottom right, #fbcfe8, #f9a8d4)' }} />
               </div>
-              <p className="text-xs text-white font-medium" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>12,000+ students</p>
+              <p className="text-sm text-white font-medium" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>12,000+ students</p>
             </div>
           </div>
 
-          {/* Right Panel - Form */}
-          <form className="signup-scroll-form p-4 md:p-5 lg:p-6 bg-white flex flex-col overflow-y-auto" style={{
+          {/* Right Panel - Scrollable Form */}
+          <form className="signup-scroll-form p-8 lg:p-10 bg-white flex flex-col overflow-y-auto rounded-r-3xl" style={{
             scrollbarWidth: 'thin',
             scrollbarColor: '#7c3aed #e5e7eb'
           }}>
-            <FieldGroup className="space-y-2.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
-              <div className="flex md:hidden items-center justify-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
-                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+            <FieldGroup className="space-y-3.5 animate-in slide-in-from-right duration-700 max-w-md mx-auto w-full">
+              <div className="flex md:hidden items-center justify-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg cursor-pointer" style={{ background: 'linear-gradient(to bottom right, #7c3aed, #0066ff)' }}>
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-lg font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
+                <span className="text-xl font-bold bg-clip-text text-transparent" style={{ fontFamily: "'Inter', sans-serif", background: 'linear-gradient(to right, #7c3aed, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Matalino</span>
               </div>
 
-              <div className="mb-2">
+              <div className="mb-4">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1" style={{ fontWeight: 700 }}>Create Account</h1>
                 <p className="text-gray-600 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>Fill in your details to get started</p>
               </div>
 
               <Field>
-                <FieldLabel htmlFor="name" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
+                <FieldLabel htmlFor="name" className="text-gray-700 font-medium text-sm mb-4 block cursor-pointer" style={{ fontWeight: 600 }}>
                   Full Name
                 </FieldLabel>
                 <div className="relative group">
@@ -137,14 +183,14 @@ export function SignupForm({
                     type="text"
                     placeholder="John Doe"
                     required
-                    className="relative h-10 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-3 hover:border-gray-300 cursor-text text-sm"
+                    className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text text-sm"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="email" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
+                <FieldLabel htmlFor="email" className="text-gray-700 font-medium text-sm mb-4 block cursor-pointer" style={{ fontWeight: 600 }}>
                   Email
                 </FieldLabel>
                 <div className="relative group">
@@ -154,15 +200,15 @@ export function SignupForm({
                     type="email"
                     placeholder="you@example.com"
                     required
-                    className="relative h-10 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-3 hover:border-gray-300 cursor-text text-sm"
+                    className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text text-sm"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   />
                 </div>
               </Field>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <Field>
-                  <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
+                  <FieldLabel htmlFor="password" className="text-gray-700 font-medium text-sm mb-4 block cursor-pointer" style={{ fontWeight: 600 }}>
                     Password
                   </FieldLabel>
                   <div className="relative group">
@@ -172,14 +218,14 @@ export function SignupForm({
                       type="password"
                       placeholder="••••••••"
                       required
-                      className="relative h-10 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-3 hover:border-gray-300 cursor-text text-sm"
+                      className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text text-sm"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     />
                   </div>
                 </Field>
 
                 <Field>
-                  <FieldLabel htmlFor="confirm-password" className="text-gray-700 font-medium text-sm mb-1.5 block cursor-pointer" style={{ fontWeight: 600 }}>
+                  <FieldLabel htmlFor="confirm-password" className="text-gray-700 font-medium text-sm mb-4 block cursor-pointer" style={{ fontWeight: 600 }}>
                     Confirm
                   </FieldLabel>
                   <div className="relative group">
@@ -189,21 +235,21 @@ export function SignupForm({
                       type="password"
                       placeholder="••••••••"
                       required
-                      className="relative h-10 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-3 hover:border-gray-300 cursor-text text-sm"
+                      className="relative h-11 bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 rounded-xl transition-all px-4 hover:border-gray-300 cursor-text text-sm"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     />
                   </div>
                 </Field>
               </div>
 
-              <div className="flex items-start gap-2 py-0.5">
+              <div className="flex items-start gap-2 py-1">
                 <input 
                   type="checkbox" 
                   id="terms" 
                   required
                   className="w-4 h-4 text-[#7c3aed] border-gray-300 rounded focus:ring-[#7c3aed] mt-0.5 cursor-pointer"
                 />
-                <label htmlFor="terms" className="text-xs text-gray-700 cursor-pointer" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>
                   I agree to the{" "}
                   <a href="#" className="text-[#7c3aed] hover:text-[#6929c4] font-medium cursor-pointer hover:underline">
                     Terms
@@ -217,28 +263,28 @@ export function SignupForm({
 
               <Button 
                 type="submit" 
-                className="w-full h-10 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer text-sm"
+                className="w-full h-11 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] active:scale-95 cursor-pointer text-sm"
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, background: 'linear-gradient(to right, #7c3aed, #0066ff)' }}
               >
                 Create Account
               </Button>
 
-              <div className="relative my-2.5">
+              <div className="relative my-4">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200" />
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="bg-white px-3 text-xs text-gray-500" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>Or sign up with</span>
+                  <span className="bg-white px-3 text-sm text-gray-500" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>Or sign up with</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-3">
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -249,9 +295,9 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
                   </svg>
                 </Button>
@@ -259,28 +305,31 @@ export function SignupForm({
                 <Button 
                   variant="outline" 
                   type="button"
-                  className="h-10 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="h-11 border-2 border-gray-200 hover:border-[#7c3aed] hover:bg-purple-50 rounded-xl transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
-                  <svg className="w-4 h-4" fill="#1877F2" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </Button>
               </div>
 
-              <FieldDescription className="text-center text-gray-600 text-sm pt-1.5 pb-2">
+              <div className="text-center text-gray-600 text-sm pt-2">
                 Already have an account?{" "}
                 <button 
                   type="button"
                   onClick={() => setPage(true)} 
-                  className="text-[#7c3aed] hover:text-[#6929c4] font-medium transition-colors cursor-pointer hover:underline"
+                  className="text-[#7c3aed] hover:text-[#6929c4] font-semibold transition-colors cursor-pointer hover:underline"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   Sign in
                 </button>
-              </FieldDescription>
+              </div>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
+
+export default SignupForm;
