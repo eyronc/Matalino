@@ -1,0 +1,21 @@
+package com.subject.subject.maps;
+
+import com.subject.subject.dtos.LessonDTO;
+import com.subject.subject.entities.Lesson;
+import org.mapstruct.AfterMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+
+@Mapper(componentModel = "spring", uses = {QuizMapper.class})
+public abstract class LessonMapper {
+    public abstract Lesson dtoToEntity(LessonDTO dto);
+    public abstract LessonDTO dtoToDto(Lesson dto);
+
+    @AfterMapping
+    public void setRelationship(@MappingTarget Lesson lesson)
+    {
+        if(lesson != null && lesson.getQuiz() != null)
+            lesson.getQuiz().setLesson(lesson);
+    }
+
+}
