@@ -1,6 +1,8 @@
 package com.subject.subject.services;
 
 import com.subject.subject.dtos.ExamDTO;
+import com.subject.subject.entities.Exam;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.ExamMapper;
 import com.subject.subject.repositories.ExamRepository;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExamServiceImp implements GenericService<ExamDTO, ExamView> {
+public class ExamServiceImp implements GenericService<ExamDTO> {
     private final ExamRepository examRepository;
     private final ExamMapper examMapper;
     public ExamServiceImp(ExamRepository examRepository, ExamMapper examMapper) {
@@ -21,19 +23,17 @@ public class ExamServiceImp implements GenericService<ExamDTO, ExamView> {
     public void add(ExamDTO toAdd) {
         examRepository.save(examMapper.dtoToEntity(toAdd));
     }
-
     @Override
     public void delete(int delete) {
-
+        examRepository.deleteById(delete);
     }
-
     @Override
-    public ExamView get(int id) {
-        return null;
+    public ExamDTO get(int id) {
+        Exam exam = examRepository.findById(id).orElseThrow(() -> new SubjectException("No such exam"));
+        return examMapper.entityToDto(exam);
     }
-
     @Override
-    public List<ExamView> getAll() {
-        return List.of();
+    public List<ExamDTO> getAll() {
+        return examMapper.entityToDtoList(examRepository.findAll());
     }
 }

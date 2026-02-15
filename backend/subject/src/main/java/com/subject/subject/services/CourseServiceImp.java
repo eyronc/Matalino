@@ -2,15 +2,15 @@ package com.subject.subject.services;
 
 import com.subject.subject.entities.Course;
 import com.subject.subject.dtos.CourseDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.CourseMapper;
 import com.subject.subject.repositories.CourseRepository;
-import com.subject.subject.views.CourseView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class CourseServiceImp implements GenericService<CourseDTO, CourseView> {
+public class CourseServiceImp implements GenericService<CourseDTO> {
 
     private final CourseRepository repository;
     private final CourseMapper mapper;
@@ -23,19 +23,17 @@ public class CourseServiceImp implements GenericService<CourseDTO, CourseView> {
     public void add(CourseDTO toAdd) {
         repository.save(mapper.dtoToEntity(toAdd));
     }
-
     @Override
     public void delete(int delete) {
-
+        repository.deleteById(delete);
     }
-
     @Override
-    public CourseView get(int id) {
-        return null;
+    public CourseDTO get(int id){
+        Course course = repository.findById(id).orElseThrow(() -> new SubjectException("Course not found"));
+        return  mapper.entityToDto(course);
     }
-
     @Override
-    public List<CourseView> getAll() {
-        return List.of();
+    public List<CourseDTO> getAll() {
+        return mapper.entityToDTOList(repository.findAll());
     }
 }

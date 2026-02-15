@@ -1,6 +1,7 @@
 package com.subject.subject.services;
 
 import com.subject.subject.dtos.ModuleExamDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.ModuleExamMapper;
 import com.subject.subject.repositories.ModuleExamRepository;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ModuleExamImp implements GenericService<ModuleExamDTO, ModuleExamView> {
+public class ModuleExamImp implements GenericService<ModuleExamDTO> {
 
     private final ModuleExamRepository repository;
     private final ModuleExamMapper mapper;
@@ -28,16 +29,16 @@ public class ModuleExamImp implements GenericService<ModuleExamDTO, ModuleExamVi
 
     @Override
     public void delete(int delete) {
-
+        repository.deleteById(delete);
     }
 
     @Override
-    public ModuleExamView get(int id) {
-        return null;
+    public ModuleExamDTO get(int id) {
+        return mapper.entityToDto(repository.findById(id).orElseThrow(() -> new SubjectException("Module Exam Not Found!")));
     }
 
     @Override
-    public List<ModuleExamView> getAll() {
-        return List.of();
+    public List<ModuleExamDTO> getAll() {
+        return mapper.entityToDtoList(repository.findAll());
     }
 }

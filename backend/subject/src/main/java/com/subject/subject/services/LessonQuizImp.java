@@ -2,6 +2,7 @@ package com.subject.subject.services;
 
 import com.subject.subject.dtos.LessonQuizDTO;
 import com.subject.subject.dtos.ModuleExamDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.LessonQuizMapper;
 import com.subject.subject.repositories.LessonQuizRepository;
@@ -12,10 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LessonQuizImp implements GenericService<LessonQuizDTO, LessonQuizView> {
+public class LessonQuizImp implements GenericService<LessonQuizDTO> {
 
     public final LessonQuizRepository  repository;
     private final LessonQuizMapper mapper;
+
     public LessonQuizImp(LessonQuizRepository repository,  LessonQuizMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
@@ -27,16 +29,16 @@ public class LessonQuizImp implements GenericService<LessonQuizDTO, LessonQuizVi
 
     @Override
     public void delete(int delete) {
-
+        repository.deleteById(delete);
     }
 
     @Override
-    public LessonQuizView get(int id) {
-        return null;
+    public LessonQuizDTO get(int id) {
+        return mapper.entityToDto(repository.findById(id).orElseThrow(() -> new SubjectException("No Lesson Quiz found with id " + id)));
     }
 
     @Override
-    public List<LessonQuizView> getAll() {
-        return List.of();
+    public List<LessonQuizDTO> getAll() {
+        return mapper.entityToDtoList(repository.findAll());
     }
 }

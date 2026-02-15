@@ -2,9 +2,9 @@ package com.subject.subject.generics;
 
 import java.util.List;
 
-public interface GenericService<T,V> {
-    void add(T toAdd);
+public interface GenericService<DTO> {
+    void add(DTO toAdd);
     void delete(int delete);
-    V get(int id);
-    List<V> getAll();
+    DTO get(int id) throws Exception;
+    List<DTO> getAll();
 }

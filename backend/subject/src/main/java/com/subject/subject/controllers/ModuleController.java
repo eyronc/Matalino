@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/modules/")
-public class ModuleController extends GenericController<ModuleDTO, ModuleView> {
+public class ModuleController extends GenericController<ModuleDTO> {
 
     public  ModuleController(ModuleServiceImp moduleService) {
         super(moduleService);

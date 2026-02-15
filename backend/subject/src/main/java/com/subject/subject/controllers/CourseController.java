@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/courses")
-public class CourseController extends GenericController<CourseDTO,CourseView> {
+public class CourseController extends GenericController<CourseDTO> {
 
     public CourseController(CourseServiceImp courseService) {
         super(courseService);

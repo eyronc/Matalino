@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/exams")
-public class ExamController extends GenericController<ExamDTO, ExamView> {
+public class ExamController extends GenericController<ExamDTO> {
 
     public  ExamController(ExamServiceImp examService) {
         super(examService);

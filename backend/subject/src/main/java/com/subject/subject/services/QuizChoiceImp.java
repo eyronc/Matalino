@@ -1,6 +1,7 @@
 package com.subject.subject.services;
 
 import com.subject.subject.dtos.QuizChoiceDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.QuizChoiceMapper;
 import com.subject.subject.repositories.QuizChoiceRepository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class QuizChoiceImp implements GenericService<QuizChoiceDTO, QuizChoicesView> {
+public class QuizChoiceImp implements GenericService<QuizChoiceDTO> {
 
     private final QuizChoiceRepository repository;
     private final QuizChoiceMapper mapper;
@@ -26,16 +27,16 @@ public class QuizChoiceImp implements GenericService<QuizChoiceDTO, QuizChoicesV
     }
     @Override
     public void delete(int delete) {
-
+        repository.deleteById(delete);
     }
 
     @Override
-    public QuizChoicesView get(int id) {
-        return null;
+    public QuizChoiceDTO get(int id) {
+        return mapper.toDTO(repository.findById(id).orElseThrow(() -> new SubjectException("No Quiz Choice")));
     }
 
     @Override
-    public List<QuizChoicesView> getAll() {
-        return List.of();
+    public List<QuizChoiceDTO> getAll() {
+        return mapper.toDTOList(repository.findAll());
     }
 }

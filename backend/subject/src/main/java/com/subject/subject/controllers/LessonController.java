@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/lessons/")
-public class LessonController extends GenericController<LessonDTO, LessonView> {
+public class LessonController extends GenericController<LessonDTO> {
 
     public LessonController(LessonServiceImp lessonService) {
         super(lessonService);

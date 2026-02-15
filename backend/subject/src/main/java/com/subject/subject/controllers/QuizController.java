@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/quizzes/")
-public class QuizController extends GenericController<QuizDTO, QuizView> {
+public class QuizController extends GenericController<QuizDTO> {
 
     public QuizController(QuizServiceImp quizService) {
         super(quizService);

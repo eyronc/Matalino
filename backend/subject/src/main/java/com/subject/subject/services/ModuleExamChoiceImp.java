@@ -1,6 +1,7 @@
 package com.subject.subject.services;
 
 import com.subject.subject.dtos.ModuleExamChoiceDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.ModuleExamChoiceMapper;
 import com.subject.subject.repositories.ModuleExamChoiceRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Service
 
-public class ModuleExamChoiceImp implements GenericService<ModuleExamChoiceDTO, ModuleExamChoicesView> {
+public class ModuleExamChoiceImp implements GenericService<ModuleExamChoiceDTO> {
 
     private final ModuleExamChoiceRepository repository;
     private final ModuleExamChoiceMapper mapper;
@@ -29,16 +30,16 @@ public class ModuleExamChoiceImp implements GenericService<ModuleExamChoiceDTO, 
 
     @Override
     public void delete(int delete) {
-
+        repository.deleteById(delete);
     }
 
     @Override
-    public ModuleExamChoicesView get(int id) {
-        return null;
+    public ModuleExamChoiceDTO get(int id) {
+        return mapper.entityToDto(repository.findById(id).orElseThrow(() -> new SubjectException("No module exam")));
     }
 
     @Override
-    public List<ModuleExamChoicesView> getAll() {
-        return List.of();
+    public List<ModuleExamChoiceDTO> getAll() {
+        return mapper.entityToDtoList(repository.findAll());
     }
 }

@@ -8,10 +8,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import com.subject.subject.entities.Module;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = {ModuleMapper.class})
 public abstract class CourseMapper {
     public abstract Course dtoToEntity(CourseDTO courseDTO);
     public abstract CourseDTO entityToDto(Course course);
+
+    public abstract  List<CourseDTO> entityToDTOList(List<Course> courseList);
 
     @AfterMapping
     public void setRelationShip(@MappingTarget Course course){

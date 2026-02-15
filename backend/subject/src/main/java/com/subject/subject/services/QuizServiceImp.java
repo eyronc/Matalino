@@ -1,6 +1,7 @@
 package com.subject.subject.services;
 
 import com.subject.subject.dtos.QuizDTO;
+import com.subject.subject.exceptions.SubjectException;
 import com.subject.subject.generics.GenericService;
 import com.subject.subject.maps.QuizMapper;
 import com.subject.subject.repositories.QuizRepository;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class QuizServiceImp implements GenericService<QuizDTO, QuizView> {
+public class QuizServiceImp implements GenericService<QuizDTO> {
+
     private  final QuizRepository quizRepository;
     private final QuizMapper quizMapper;
+
     public QuizServiceImp(QuizRepository quizRepository, QuizMapper quizMapper) {
         this.quizRepository = quizRepository;
         this.quizMapper = quizMapper;
@@ -24,16 +27,16 @@ public class QuizServiceImp implements GenericService<QuizDTO, QuizView> {
 
     @Override
     public void delete(int delete) {
-
+        quizRepository.deleteById(delete);
     }
 
     @Override
-    public QuizView get(int id) {
-        return null;
+    public QuizDTO get(int id) {
+        return quizMapper.entityToDTO(quizRepository.findById(id).orElseThrow(() -> new SubjectException("No quiz")));
     }
 
     @Override
-    public List<QuizView> getAll() {
-        return List.of();
+    public List<QuizDTO> getAll() {
+        return quizMapper.entityToDtoList(quizRepository.findAll());
     }
 }

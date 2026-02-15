@@ -10,10 +10,13 @@ import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = {LessonQuizMapper.class})
 public abstract class QuizMapper {
     public abstract Quiz dtoToEntity(QuizDTO dto);
-    public abstract QuizDTO dtoToDto(Quiz dto);
+    public abstract QuizDTO entityToDTO(Quiz dto);
+    public abstract List<QuizDTO> entityToDtoList(List<Quiz> quizList);
 
     @AfterMapping
     public void setRelationship(@MappingTarget Quiz quiz)

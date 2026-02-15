@@ -7,10 +7,13 @@ import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = {ModuleExamChoiceMapper.class})
 public abstract class ModuleExamMapper {
     public abstract ModuleExam dtoToEntity(ModuleExamDTO dto);
     public abstract ModuleExamDTO entityToDto(ModuleExam entity);
+    public abstract List<ModuleExamDTO> entityToDtoList(List<ModuleExam> entity);
 
     @AfterMapping
     public void setRelationship(@MappingTarget ModuleExam moduleExam) {
