@@ -6,22 +6,22 @@ spring:
     password:
   jpa:
     hibernate:
-      ddl-auto: update   # Automatically update DB schema (good for dev)
-    show-sql: true       # Show SQL queries in console
+      ddl-auto: update  
+    show-sql: true      
     properties:
       hibernate:
         format_sql: true
   h2:
     console:
-      enabled: true       # Enable H2 web console
-      path: /h2-console   # Access at http://localhost:8080/h2-console
+      enabled: true      
+      path: /h2-console   
 
 server:
-  port: 8080             # Dev server port
+  port: 8081          
 
 logging:
   level:
     org.springframework: INFO
-    com.yourpackage: DEBUG  # Optional: set debug for your package
+    com.yourpackage: DEBUG 
 
 

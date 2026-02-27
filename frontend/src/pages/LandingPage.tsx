@@ -1,4 +1,6 @@
+import { useKeycloak } from '@react-keycloak/web/lib/useKeycloak';
 import { useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 
 const svgPaths = {
   hero: {
@@ -197,8 +199,17 @@ function Gradient1() {
 }
 
 function HeroSection() {
+  const {keycloak} = useKeycloak();
+  const navigate = useNavigate();
+
+
   const handleRegisterClick = () => {
-    window.location.href = '/account';
+    // window.location.href = '/account';
+    if(!keycloak.authenticated)
+    {
+      keycloak.login();
+      navigate('/study')
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
