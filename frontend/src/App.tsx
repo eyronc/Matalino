@@ -22,13 +22,11 @@ export function App() {
       <Route
         path="/"
         element={
-          <PrivateRoute>
-            <UserDashboardLayout />
-          </PrivateRoute>
+         <LandingPage />
         }
       />
       <Route path="/account" element={<AccountLayout />} />
-      <Route path="/user-dashboard" element={<UserDashboardLayout />}>
+      <Route path="/user-dashboard" element={ <PrivateRoute><UserDashboardLayout /></PrivateRoute>}>
         <Route
           index
           element={

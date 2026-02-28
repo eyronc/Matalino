@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="882797ac-fa5e-4770-bd68-6fb22eed562c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subject/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/configs/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/subject/src/main/resources/application-prod.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/subject/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/subject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/configs/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/controllers/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/generics/GenericController.java" beforeDir="false" afterPath="$PROJECT_DIR$/subject/src/main/java/com/subject/subject/generics/GenericController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/subject/src/main/resources/application-dev.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subject/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/subject/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/app-sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/app-sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/nav-user.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/nav-user.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/constants/contents.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constants/contents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/LandingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/LandingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/Lessons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/Lessons.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,18 +51,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "gly",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/business/backend",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gly&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/business/backend&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
