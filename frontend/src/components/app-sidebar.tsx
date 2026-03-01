@@ -1,187 +1,207 @@
-import * as React from "react";
-import {
-  AudioWaveform,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  MessageCircle,
-  Notebook,
-  NotebookPen,
-  Settings2,
-  User,
-  Sparkles,
-} from "lucide-react";
+// app-sidebar.tsx
+// Place in: src/components/app-sidebar.tsx
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar";
+  AudioWaveform, Command, GalleryVerticalEnd, Map,
+  MessageCircle, Notebook, NotebookPen, Settings2,
+  User, Sparkles, LayoutDashboard, Crown,
+} from 'lucide-react';
+import { NavMain } from '@/components/nav-main';
+import { NavProjects } from '@/components/nav-projects';
+import { NavUser } from '@/components/nav-user';
+import { TeamSwitcher } from '@/components/team-switcher';
+import {
+  Sidebar, SidebarContent, SidebarFooter,
+  SidebarHeader, SidebarRail,
+} from '@/components/ui/sidebar';
 
-const data = {
-  user: {
-    name: "Aaron",
-    email: "aaron@matalino.app",
-    avatar: "/avatars/user.jpg",
-    role: "Pro Member",
+/* ─── static data ─────────────────────────────────────────── */
+const teams = [
+  { name: 'Matalino', logo: GalleryVerticalEnd, plan: 'Enterprise' },
+  { name: 'Matalino', logo: AudioWaveform,       plan: 'Startup'    },
+  { name: 'Matalino', logo: Command,             plan: 'Free'       },
+];
+
+const navMain = [
+  {
+    title: 'Account', url: '/account', icon: User, isActive: true,
+    items: [
+      { title: 'Profile',  url: '/profile'  },
+      { title: 'Files',    url: '/files'    },
+      { title: 'History',  url: '/history'  },
+    ],
   },
-  teams: [
-    {
-      name: "Matalino",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Matalino",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Matalino",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
-  navMain: [
-    {
-      title: "Account",
-      url: "/account",
-      icon: User,
-      isActive: true,
-      items: [
-        { title: "Profile", url: "/profile" },
-        { title: "Files", url: "/files" },
-        { title: "History", url: "/history" },
-      ],
-    },
-    {
-      title: "Community Hub",
-      url: "/community",
-      icon: MessageCircle,
-      items: [
-        { title: "Feed", url: "/feed" },
-        { title: "Groups", url: "/groups" },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings2,
-      items: [
-        { title: "General", url: "/settings/general" },
-        { title: "Team", url: "/settings/team" },
-        { title: "Billing", url: "/settings/billing" },
-        { title: "Limits", url: "/settings/limits" },
-      ],
-    },
-  ],
-  projects: [
-    { name: "Dashboard", url: "/user-dashboard", icon: Frame },
-    { name: "Lessons", url: "lessons", icon: NotebookPen },
-    { name: "Exams", url: "exams", icon: Map },
-    { name: "Notes", url: "notes", icon: Notebook },
-  ],
-};
+  {
+    title: 'Community Hub', url: '/community', icon: MessageCircle,
+    items: [
+      { title: 'Feed',   url: '/feed'   },
+      { title: 'Groups', url: '/groups' },
+    ],
+  },
+  {
+    title: 'Settings', url: '/settings', icon: Settings2,
+    items: [
+      { title: 'General', url: '/settings/general' },
+      { title: 'Team',    url: '/settings/team'    },
+      { title: 'Billing', url: '/settings/billing' },
+      { title: 'Limits',  url: '/settings/limits'  },
+    ],
+  },
+];
 
-export function AppSidebar({
-  ...props
-}: React.ComponentProps<typeof Sidebar>) {
+const projects = [
+  { name: 'Dashboard', url: '/user-dashboard', icon: LayoutDashboard },
+  { name: 'Lessons',   url: 'lessons',          icon: NotebookPen     },
+  { name: 'Exams',     url: 'exams',            icon: Map             },
+  { name: 'Notes',     url: 'notes',            icon: Notebook        },
+];
+
+/* ─── styles ──────────────────────────────────────────────── */
+const CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+  [data-sidebar="sidebar"] {
+    background: #ffffff !important;
+    border-right: 1px solid #edeef0 !important;
+  }
+
+  .sb-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    margin-bottom: 4px;
+  }
+  .sb-label span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6c7787;
+    white-space: nowrap;
+  }
+  .sb-label .sb-line {
+    flex: 1;
+    height: 1px;
+    background: #edeef0;
+  }
+
+  .sb-upgrade {
+    margin: 0 10px;
+    border-radius: 20px;
+    padding: 18px;
+    background: linear-gradient(135deg, #e6f0ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    position: relative;
+    overflow: hidden;
+  }
+  .sb-upgrade::before {
+    content: '';
+    position: absolute;
+    top: -24px; right: -24px;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, rgba(0,102,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .sb-upgrade-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: #0066FF;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,102,255,0.3);
+  }
+  .sb-upgrade h4 {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 14px;
+    color: #002b6b;
+    margin: 0 0 4px;
+  }
+  .sb-upgrade p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    color: #414d60;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .sb-upgrade-btn {
+    width: 100%;
+    padding: 9px;
+    background: #0066FF;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    box-shadow: 0 4px 12px rgba(0,102,255,0.25);
+  }
+  .sb-upgrade-btn:hover {
+    background: #0052cc;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0,102,255,0.35);
+  }
+`;
+
+/* ─── component ───────────────────────────────────────────── */
+export function AppSidebar({ ...props }) {
   return (
-    <Sidebar
-      collapsible="icon"
-      {...props}
-      className="border-r border-gray-200 bg-white"
-    >
-      <SidebarHeader className="border-b border-gray-100 px-4 py-4">
-        <div className="cursor-pointer transition-all hover:scale-[1.02] duration-200">
-          <TeamSwitcher teams={data.teams} />
-        </div>
+    <Sidebar collapsible="icon" {...props}>
+      <style>{CSS}</style>
+
+      {/* ── Header ── */}
+      <SidebarHeader style={{ padding: '16px 12px', borderBottom: '1px solid #edeef0' }}>
+        <TeamSwitcher teams={teams} />
       </SidebarHeader>
 
-      <SidebarContent className="px-3 py-4 flex flex-col">
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <div className="px-3 mb-3">
-              <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Quick Access</span>
-              </div>
-            </div>
-            <NavProjects projects={data.projects} />
-          </div>
+      {/* ── Content ── */}
+      <SidebarContent style={{ padding: '16px 0', display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center px-3">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
+        {/* Quick Access */}
+        <div>
+          <div className="sb-label">
+            <Sparkles size={9} color="#6c7787" />
+            <span>Quick Access</span>
+            <div className="sb-line" />
           </div>
-
-          <div className="space-y-2">
-            <div className="px-3 mb-3">
-              <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                <Settings2 className="w-3.5 h-3.5" />
-                <span>Manage</span>
-              </div>
-            </div>
-            <NavMain items={data.navMain} />
-          </div>
+          <NavProjects projects={projects} />
         </div>
 
-        <div className="mt-auto pt-6 px-3">
-          <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-indigo-500 to-purple-600 p-4 text-white shadow-lg">
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+        {/* Manage */}
+        <div>
+          <div className="sb-label">
+            <Settings2 size={9} color="#6c7787" />
+            <span>Manage</span>
+            <div className="sb-line" />
+          </div>
+          <NavMain items={navMain} />
+        </div>
 
-            <div className="relative">
-              <div className="inline-flex items-center justify-center w-10 h-10 bg-white/20 rounded-xl mb-3 backdrop-blur-sm">
-                <Sparkles className="w-5 h-5" />
-              </div>
-              <h3 className="font-bold text-sm mb-1">Upgrade to Pro</h3>
-              <p className="text-xs text-white/80 mb-4 leading-relaxed">
-                Unlock advanced features and unlimited access
-              </p>
-              <button className="w-full bg-white text-indigo-600 hover:bg-white/90 text-sm font-semibold py-2 px-4 rounded-lg transition-all duration-200 hover:shadow-lg">
-                Upgrade Now
-              </button>
+        {/* Upgrade card */}
+        <div style={{ marginTop: 'auto', paddingTop: '8px' }}>
+          <div className="sb-upgrade">
+            <div className="sb-upgrade-icon">
+              <Crown size={16} />
             </div>
+            <h4>Upgrade to Pro</h4>
+            <p>Unlock AI tutoring, unlimited exams &amp; advanced analytics.</p>
+            <button className="sb-upgrade-btn">
+              <Sparkles size={12} />
+              Upgrade Now
+            </button>
           </div>
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="p-3">
-        <div className="group relative overflow-hidden rounded-2xl bg-linear-to-br from-gray-50/80 via-indigo-50/40 to-purple-50/30 backdrop-blur-sm p-4 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
-          
-          {/* Animated Gradient Background */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="absolute inset-0 bg-linear-to-br from-indigo-100/60 via-purple-100/40 to-pink-100/30"></div>
-            <div className="absolute inset-0 bg-linear-to-tl from-transparent via-white/30 to-transparent"></div>
-          </div>
-
-          {/* Subtle Glow Effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="absolute top-0 left-1/4 w-32 h-32 bg-indigo-300/20 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-1/4 w-24 h-24 bg-purple-300/20 rounded-full blur-2xl"></div>
-          </div>
-
-          {/* Clickable NavUser Area */}
-          <div className="relative z-10">
-            <NavUser
-              user={{
-                name: data.user.name,
-                email: data.user.email,
-                avatar: "",
-              }}
-            />
-          </div>
-
-        </div>
+      {/* ── Footer: NavUser handles its own dropdown + logout ── */}
+      {/* NO onClick here — logout only fires inside the dropdown */}
+      <SidebarFooter style={{ padding: '8px' }}>
+        <NavUser user={{ name: '', email: '', avatar: '' }} />
       </SidebarFooter>
 
       <SidebarRail />

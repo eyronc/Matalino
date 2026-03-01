@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-
-
 const svgPaths = {
   hero: {
     p1bfe6040: "M1088.7 728.258...",
@@ -209,7 +207,9 @@ function HeroSection() {
   const handleRegisterClick = () => {
     if(!keycloak.authenticated)
     {
-      keycloak.login();
+      keycloak.login({
+        redirectUri: window.location.origin + '/user-dashboard'
+      });
       navigate('/user-dashboard')
     }
   };
@@ -1100,7 +1100,7 @@ export default function LandingPage() {
     if (keycloak.authenticated && initialized) {
       navigate('/user-dashboard');
     }
-  }, [keycloak, initialized]);
+  }, [initialized]);
 
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden">
