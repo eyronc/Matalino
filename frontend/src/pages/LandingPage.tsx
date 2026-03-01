@@ -1,4 +1,9 @@
+import { useKeycloak } from '@react-keycloak/web/lib/useKeycloak';
 import { useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+
 
 const svgPaths = {
   hero: {
@@ -197,8 +202,16 @@ function Gradient1() {
 }
 
 function HeroSection() {
+  const {keycloak} = useKeycloak();
+  const navigate = useNavigate();
+
+
   const handleRegisterClick = () => {
-    window.location.href = '/account';
+    if(!keycloak.authenticated)
+    {
+      keycloak.login();
+      navigate('/user-dashboard')
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -1080,6 +1093,15 @@ function CtaFooterSection() {
 // ============ MAIN LANDING PAGE ============
 
 export default function LandingPage() {
+  const {keycloak, initialized} = useKeycloak();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (keycloak.authenticated && initialized) {
+      navigate('/user-dashboard');
+    }
+  }, [keycloak, initialized]);
+
   return (
     <div className="bg-white min-h-screen w-full overflow-x-hidden">
       <HeroSection />

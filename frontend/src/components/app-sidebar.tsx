@@ -184,7 +184,6 @@ export function AppSidebar({
         </div>
       </SidebarFooter>
 
-
       <SidebarRail />
     </Sidebar>
   );
