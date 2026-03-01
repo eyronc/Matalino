@@ -1,6 +1,6 @@
 import { useKeycloak } from '@react-keycloak/web/lib/useKeycloak';
 import { useState } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
@@ -924,7 +924,7 @@ function FooterGradient1() {
             <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_footer2" x1="852.385" x2="1026.52" y1="1786.37" y2="2111.64">
               <stop stopColor="white" />
               <stop offset="1" stopColor="#391DE8" />
-            </linearGradient>x
+            </linearGradient>
             <linearGradient gradientUnits="userSpaceOnUse" id="paint1_linear_footer2" x1="1472.62" x2="560.352" y1="1502.05" y2="650.164">
               <stop stopColor="white" />
               <stop offset="1" stopColor="white" stopOpacity="0" />

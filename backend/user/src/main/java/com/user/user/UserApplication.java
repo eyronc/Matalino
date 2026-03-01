@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:backend/user/src/main/java/com/user/user/UserApplication.java
 package com.user.user;
 
 import org.springframework.boot.SpringApplication;
@@ -11,3 +12,18 @@ public class UserApplication {
 	}
 
 }
+=======
+package com.example.config_server;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ConfigServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ConfigServerApplication.class, args);
+	}
+
+}
+>>>>>>> Stashed changes:backend/config-server/config-server/src/main/java/com/example/config_server/ConfigServerApplication.java

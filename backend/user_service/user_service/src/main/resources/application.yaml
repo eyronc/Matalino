@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: user_service
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8081
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
+
+
+resilience4j:
+  circuit breaker:
+    instances:
+      userServiceBreaker:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 30
+        permitted-number-of-calls-in-half-open-state: 5
+
+
+
+
+
+
+
+
+
