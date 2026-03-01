@@ -1,0 +1,26 @@
+services:
+  subject-service:
+    build: ./subject
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./subject/.env
+    depends_on:
+      - mysql
+
+  user-service:
+    build: ./user
+    ports:
+      - "8082:8082"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=${MYSQL_ALLOW_EMPTY_PASSWORD}
+      - MYSQL_RANDOM_ROOT_PASSWORD=${MYSQL_RANDOM_ROOT_PASSWORD}
+
+
+
+    

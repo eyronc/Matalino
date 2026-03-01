@@ -20,6 +20,7 @@ public class Module {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String moduleName;
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)

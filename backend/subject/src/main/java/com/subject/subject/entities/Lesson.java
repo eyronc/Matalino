@@ -13,7 +13,7 @@ public class Lesson {
     private Integer id;
 
     private String lessonName;
-
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne(fetch = FetchType.EAGER)

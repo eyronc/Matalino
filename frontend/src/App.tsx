@@ -14,22 +14,52 @@ import Exams from "@/pages/Exams";
 import Notes from "@/pages/Notes";
 // @ts-ignore
 import Dashboard from "@/pages/Dashboard";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 export function App() {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/account" element={<AccountLayout/>} />
-      
-      {/* Nested routes */}
-      <Route path="/user-dashboard" element={<UserDashboardLayout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="lessons" element={<Lessons />} />
-        <Route path="exams" element={<Exams />} />
-        <Route path="notes" element={<Notes />} />
+      <Route
+        path="/"
+        element={
+         <LandingPage />
+        }
+      />
+      <Route path="/account" element={<AccountLayout />} />
+      <Route path="/user-dashboard" element={ <PrivateRoute><UserDashboardLayout /></PrivateRoute>}>
+        <Route
+          index
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="lessons"
+          element={
+            <PrivateRoute>
+              <Lessons />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="exams"
+          element={
+            <PrivateRoute>
+              <Exams />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="notes"
+          element={
+            <PrivateRoute>
+              <Notes />
+            </PrivateRoute>
+          }
+        />
       </Route>
-
-      <Route path="/study" element={<Study />} />
     </Routes>
   );
 }

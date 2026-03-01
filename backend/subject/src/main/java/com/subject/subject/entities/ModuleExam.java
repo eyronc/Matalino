@@ -23,7 +23,7 @@ public class ModuleExam {
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     private Exam exam;
-
+    @Column(columnDefinition = "TEXT")
     private String question;
     private String answer;
     private String image;

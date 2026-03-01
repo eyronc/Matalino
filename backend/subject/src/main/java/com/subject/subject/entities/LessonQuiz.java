@@ -15,7 +15,7 @@ public class LessonQuiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @Column(columnDefinition = "TEXT")
     private String question;
     private String answer;
     private String image;
